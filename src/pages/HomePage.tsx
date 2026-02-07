@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   Star,
   ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_URL, WHATSAPP_ORDER_URL, portfolioProjects } from "@/lib/constants";
@@ -242,7 +243,7 @@ export default function HomePage() {
             </Button>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {portfolioProjects.map((project) => (
               <motion.div
                 key={project.id}
@@ -273,7 +274,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
                   >
-                    Visit Site <ArrowRight className="h-3 w-3" />
+                    Visit Site <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
               </motion.div>
