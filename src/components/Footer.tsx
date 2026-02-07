@@ -18,9 +18,9 @@ const footerLinks = {
     { label: "Maintenance", href: "/services" },
   ],
   Resources: [
+    { label: "Knowledge Bank", href: "/knowledge-bank" },
     { label: "Order Online", href: "/order" },
-    { label: "FAQ", href: "/about#faq" },
-    { label: "Blog", href: "#" },
+    { label: "FAQ", href: "/knowledge-bank#faq" },
     { label: "Case Studies", href: "/portfolio" },
   ],
 };
