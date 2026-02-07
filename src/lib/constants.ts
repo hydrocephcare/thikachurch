@@ -1,39 +1,113 @@
-import portfolioBrightpath from "@/assets/portfolio-brightpath.jpg";
-import portfolioTukule from "@/assets/portfolio-tukule.jpg";
-import portfolioHarvestfaith from "@/assets/portfolio-harvestfaith.jpg";
+import portfolioMkucu from "@/assets/portfolio-mkucu.png";
+import portfolioMedlife from "@/assets/portfolio-medlife.png";
+import portfolioAzaniisp from "@/assets/portfolio-azaniisp.png";
+import portfolioKcse from "@/assets/portfolio-kcse.jpg";
 
 export const WHATSAPP_NUMBER = "254115475543";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in your web development services.")}`;
 export const WHATSAPP_ORDER_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'd like to order a website. Here are my details:")}`;
 export const PHONE_DISPLAY = "+254 115 475 543";
 
-export const portfolioProjects = [
+export type ProjectStatus = "completed" | "coming-soon";
+
+export interface PortfolioProject {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  url: string;
+  tags: string[];
+  image: string | null;
+  status: ProjectStatus;
+}
+
+export const portfolioProjects: PortfolioProject[] = [
   {
-    id: "brightpath",
-    title: "BrightPath Academy",
-    category: "Education",
-    description: "A modern school management platform with student portals, event calendars, and online enrollment — designed for engagement and seamless administration.",
-    url: "#",
-    tags: ["React", "Responsive", "SEO"],
-    image: portfolioBrightpath,
-  },
-  {
-    id: "tukule",
-    title: "Tukule Express",
-    category: "E-Commerce",
-    description: "A fast-loading food delivery platform with M-Pesa integration, real-time order tracking, and a mobile-first design for the Kenyan market.",
-    url: "#",
-    tags: ["E-Commerce", "M-Pesa", "Mobile"],
-    image: portfolioTukule,
-  },
-  {
-    id: "harvestfaith",
-    title: "Harvest Faith Church",
+    id: "mku-cu",
+    title: "MKU Christian Union",
     category: "Church",
-    description: "A beautiful church website with sermon archives, event management, online giving, and a member portal — built to strengthen community connection.",
+    description:
+      "A feature-rich church community website for Mt. Kenya University Christian Union — with sermon archives, YouTube live streaming, events calendar, ministry pages, and WhatsApp integration for member engagement.",
+    url: "https://mku-cu-connect.vercel.app/",
+    tags: ["Church", "React", "Community", "Live Streaming"],
+    image: portfolioMkucu,
+    status: "completed",
+  },
+  {
+    id: "medlife-echos",
+    title: "Medlife Echo's",
+    category: "Education",
+    description:
+      "A comprehensive medical education blog with 281+ articles across 23 categories — covering parasitology, biochemistry, pathology, and exam prep for MKU medical students.",
+    url: "https://medlifeechos.vercel.app/",
+    tags: ["Blog", "Medical", "Education", "SEO"],
+    image: portfolioMedlife,
+    status: "completed",
+  },
+  {
+    id: "azani-isp",
+    title: "Azani ISP Project",
+    category: "Education",
+    description:
+      "A professional landing page for the 2026 KCSE Computer Studies Paper 3 project — featuring project documentation, pricing, WhatsApp ordering, and community forums for 500+ students.",
+    url: "https://www.azaniispproject.co.ke/",
+    tags: ["Landing Page", "KCSE", "E-Commerce"],
+    image: portfolioAzaniisp,
+    status: "completed",
+  },
+  {
+    id: "kcse-azani",
+    title: "KCSE Resource Hub",
+    category: "Education",
+    description:
+      "A dedicated KCSE exam resource platform under the Azani ISP brand — providing study guides, past papers, and project support materials for Kenyan high school students.",
+    url: "https://www.kcse.azaniispproject.co.ke/",
+    tags: ["Education", "KCSE", "Resources"],
+    image: portfolioKcse,
+    status: "completed",
+  },
+];
+
+export const upcomingProjects: PortfolioProject[] = [
+  {
+    id: "grace-chapel",
+    title: "Grace Chapel International",
+    category: "Church",
+    description: "A modern church website with live streaming, sermon archives, and online giving for a growing congregation.",
     url: "#",
-    tags: ["Church", "Donations", "Events"],
-    image: portfolioHarvestfaith,
+    tags: ["Church", "Donations", "Live Stream"],
+    image: null,
+    status: "coming-soon",
+  },
+  {
+    id: "nairobi-worship",
+    title: "Nairobi Worship Centre",
+    category: "Church",
+    description: "Full-featured church platform with member portal, small groups management, and event registration.",
+    url: "#",
+    tags: ["Church", "Member Portal", "Events"],
+    image: null,
+    status: "coming-soon",
+  },
+  {
+    id: "youth-connect",
+    title: "YouthConnect Ministry",
+    category: "Church",
+    description: "A vibrant youth ministry website with devotionals, prayer requests, and community forums.",
+    url: "#",
+    tags: ["Youth", "Ministry", "Community"],
+    image: null,
+    status: "coming-soon",
+  },
+  {
+    id: "thika-business",
+    title: "Thika SME Directory",
+    category: "Business",
+    description: "A local business directory and listing platform for small businesses in Thika town.",
+    url: "#",
+    tags: ["Directory", "Business", "Local"],
+    image: null,
+    status: "coming-soon",
   },
 ];
 
