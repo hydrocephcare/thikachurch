@@ -9,8 +9,8 @@ const plans = [
   {
     name: "Starter",
     subtitle: "Ready-Made Websites",
-    price: "KES 15,000",
-    priceUsd: "~$115 USD",
+    price: "KES 5,000",
+    priceUsd: "~$38 USD",
     description: "Perfect for churches, small businesses, and personal brands who need a professional online presence fast.",
     features: [
       { text: "Pre-built responsive template", included: true },
