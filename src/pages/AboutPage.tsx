@@ -50,7 +50,7 @@ export default function AboutPage() {
               We're Building the <span className="text-gradient-primary">Digital Future</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              WebcraftKE is an international web development agency headquartered in Nairobi, Kenya. We're a team of passionate developers, designers, and strategists who believe great websites should be accessible to everyone — regardless of location or budget.
+              Omnexus is an international web development agency headquartered in Nairobi, Kenya. We're a team of passionate developers, designers, and strategists who believe great websites should be accessible to everyone — regardless of location or budget.
             </p>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
               Since our founding, we've delivered 50+ projects for clients across 15+ countries, from small churches in rural Kenya to tech startups in London. Our mission is simple: build websites that perform, convert, and grow with your business.

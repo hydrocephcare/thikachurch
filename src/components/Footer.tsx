@@ -33,7 +33,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="font-display text-2xl font-bold text-foreground">
-              Webcraft<span className="text-primary">KE</span>
+              Omne<span className="text-primary">xus</span>
             </Link>
             <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-sm">
               International web development agency delivering premium, high-performance websites for businesses, churches, and organizations worldwide. Headquartered in Kenya, serving clients globally.
@@ -49,7 +49,7 @@ export default function Footer() {
               </span>
               <span className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                hello@webcraftke.com
+                hello@omnexus.co.ke
               </span>
               <span className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
@@ -80,7 +80,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} WebcraftKE. All rights reserved.
+            © {new Date().getFullYear()} Omnexus. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-muted-foreground">
             <span>Privacy Policy</span>
