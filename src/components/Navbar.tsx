@@ -38,7 +38,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
         <Link to="/" className="font-display text-xl font-bold text-foreground tracking-tight">
-          Omne<span className="text-primary">xus</span>
+          Webcraft<span className="text-primary">KE</span>
         </Link>
 
         {/* Desktop */}

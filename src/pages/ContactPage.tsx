@@ -11,7 +11,7 @@ import { fadeUp } from "@/lib/animations";
 const contactMethods = [
   { icon: MessageCircle, title: "WhatsApp", value: PHONE_DISPLAY, description: "Fastest way to reach us", link: WHATSAPP_URL },
   { icon: Phone, title: "Phone", value: PHONE_DISPLAY, description: "Available during business hours" },
-  { icon: Mail, title: "Email", value: "hello@omnexus.co.ke", description: "We reply within 24 hours" },
+  { icon: Mail, title: "Email", value: "hello@webcraftke.com", description: "We reply within 24 hours" },
   { icon: MapPin, title: "Location", value: "Nairobi, Kenya", description: "Serving clients worldwide" },
 ];
 

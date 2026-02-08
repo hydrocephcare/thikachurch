@@ -490,7 +490,7 @@ export default function KnowledgeBankPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 className="text-3xl font-display font-extrabold mb-8">
-              Why Choose Omnexus for Your Church Website?
+              Why Choose WebcraftKE for Your Church Website?
             </h2>
 
             {/* Kenya-Specific */}
@@ -782,13 +782,6 @@ export default function KnowledgeBankPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <h3 className="text-xl font-display font-bold mb-6">Related Articles</h3>
           <div className="grid sm:grid-cols-2 gap-4">
-            <Link to="/blog/church-website-guide-2026" className="p-4 rounded-xl bg-card border border-border hover:border-primary/20 transition-colors">
-              <div className="flex items-center gap-2">
-                <Lightbulb className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-sm font-medium text-foreground">Transform Your Church's Digital Presence: Complete Guide 2026</span>
-              </div>
-              <span className="text-xs text-primary mt-1 block">Read now →</span>
-            </Link>
             {[
               "How to Set Up M-Pesa Church Donations in Kenya",
               "10 Best Church Website Examples in Kenya 2026",

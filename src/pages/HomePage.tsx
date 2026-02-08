@@ -20,7 +20,6 @@ import heroBg from "@/assets/hero-dark.jpg";
 import serviceChurch from "@/assets/service-church.jpg";
 import serviceCustom from "@/assets/service-custom.jpg";
 import serviceEcommerce from "@/assets/service-ecommerce.jpg";
-import ChurchShowcase from "@/components/ChurchShowcase";
 
 const stats = [
   { value: "50+", label: "Projects Delivered" },
@@ -46,7 +45,7 @@ const whyUs = [
 ];
 
 const testimonials = [
-  { name: "Pastor James K.", role: "Jubilee Chapel, Nairobi", text: "Omnexus transformed our church's online presence. Online giving has increased by 200%.", rating: 5 },
+  { name: "Pastor James K.", role: "Jubilee Chapel, Nairobi", text: "WebcraftKE transformed our church's online presence. Online giving has increased by 200%.", rating: 5 },
   { name: "Sarah M.", role: "CEO, Savannah Digital", text: "Professional, fast, and the quality exceeded our expectations. Conversion rate improved by 150%.", rating: 5 },
   { name: "Dr. Peter O.", role: "Greenleaf Health Clinic", text: "The patient booking system streamlined our operations completely. What took 3 calls now takes 30 seconds.", rating: 5 },
   { name: "Rev. Mary W.", role: "Horizon Church, London", text: "Working remotely was seamless. They delivered a world-class church website.", rating: 5 },
@@ -204,7 +203,7 @@ export default function HomePage() {
       <section className="py-20 bg-muted/40">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-sm font-medium text-primary uppercase tracking-widest">Why Omnexus</span>
+            <span className="text-sm font-medium text-primary uppercase tracking-widest">Why WebcraftKE</span>
             <h2 className="mt-3 text-3xl md:text-4xl font-display font-extrabold text-foreground">
               Built Different. Built Better.
             </h2>
@@ -230,8 +229,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* Church Showcase */}
-      <ChurchShowcase />
 
       {/* Portfolio Preview */}
       <section className="py-20">
