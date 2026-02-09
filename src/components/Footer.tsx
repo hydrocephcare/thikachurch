@@ -74,7 +74,7 @@ export default function Footer() {
               </span>
               <span className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4" />
-                hello@webcraftke.com
+                hello@omenexus.co.ke
               </span>
               <span className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
