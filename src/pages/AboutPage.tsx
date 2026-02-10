@@ -13,7 +13,7 @@ import { fadeUp } from "@/lib/animations";
 
 const values = [
   { icon: Target, title: "Results-Driven", description: "Every pixel serves a purpose. We design for outcomes, not just aesthetics." },
-  { icon: Globe, title: "Global Mindset", description: "Based in Kenya, we build for the world — meeting international standards and best practices." },
+  { icon: Globe, title: "Kenya-First", description: "We understand Kenyan churches — M-Pesa, mobile-first, and affordable solutions." },
   { icon: Users, title: "Client-First", description: "Your success is our success. We're available 24/7 and committed to your vision." },
   { icon: Award, title: "Quality Obsessed", description: "We never cut corners. Clean code, fast performance, and pixel-perfect design — every time." },
 ];
@@ -21,12 +21,12 @@ const values = [
 const faqs = [
   { q: "How long does it take to build a website?", a: "Ready-made websites can be delivered within 2–3 days. Custom projects typically take 1–4 weeks depending on complexity. Enterprise applications may take 1–3 months." },
   { q: "What's included in every website?", a: "Every site includes responsive design, SEO optimization, mobile-friendly layout, SSL security, analytics setup, and post-launch support. Custom projects include additional features based on your requirements." },
-  { q: "Do you work with international clients?", a: "Absolutely! We work with clients across Africa, Europe, North America, and Asia. We communicate via WhatsApp, email, and video calls. Payments can be made via PayPal, Wise, bank transfer, or crypto." },
-  { q: "What are the payment terms?", a: "We require a 50% deposit to begin work, with the remaining 50% due upon delivery. For larger projects, we offer milestone-based payments. We accept M-Pesa, bank transfer, PayPal, Wise, and cryptocurrency." },
-  { q: "Can I update the site myself after it's built?", a: "Yes! We can integrate a CMS (like WordPress or a custom admin panel) so you can easily manage your content. We also provide training and documentation." },
-  { q: "Do you offer hosting and maintenance?", a: "Yes. We can set up hosting on platforms like Vercel, Netlify, or traditional hosting. We also offer monthly maintenance plans that include security updates, backups, and content changes." },
-  { q: "What if I'm not satisfied with the design?", a: "We offer unlimited design revisions during the project. If you're not happy with the final product, we offer a money-back guarantee under our terms of service." },
-  { q: "Do you build mobile apps?", a: "We specialize in web applications, which work perfectly on mobile browsers. For native mobile apps, we can recommend trusted partners or build progressive web apps (PWAs) that work like native apps." },
+  { q: "Do you work with international clients?", a: "Absolutely! We work with clients across Africa, Europe, North America, and Asia. We communicate via WhatsApp, email, and video calls." },
+  { q: "What are the payment terms?", a: "We require a 50% deposit to begin work, with the remaining 50% due upon delivery. We accept M-Pesa, bank transfer, PayPal, and Wise." },
+  { q: "Can I update the site myself after it's built?", a: "Yes! We can integrate a CMS so you can easily manage your content. We also provide training and documentation." },
+  { q: "Do you offer hosting and maintenance?", a: "Yes. We can set up hosting on platforms like Vercel, Netlify, or traditional hosting. We also offer monthly maintenance plans." },
+  { q: "What if I'm not satisfied with the design?", a: "We offer unlimited design revisions during the project. If you're not happy with the final product, we offer a money-back guarantee." },
+  { q: "Do you build mobile apps?", a: "We specialize in web applications, which work perfectly on mobile browsers. For native apps, we can build progressive web apps (PWAs) that work like native apps." },
 ];
 
 const team = [
@@ -50,10 +50,10 @@ export default function AboutPage() {
               We're Building the <span className="text-gradient-primary">Digital Future</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              WebcraftKE is an international web development agency headquartered in Nairobi, Kenya. We're a team of passionate developers, designers, and strategists who believe great websites should be accessible to everyone — regardless of location or budget.
+              OmnexusKE is a web development agency headquartered in Nairobi, Kenya. We're a team of passionate developers, designers, and strategists who specialize in building professional church websites and digital platforms for businesses across Kenya.
             </p>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Since our founding, we've delivered 50+ projects for clients across 15+ countries, from small churches in rural Kenya to tech startups in London. Our mission is simple: build websites that perform, convert, and grow with your business.
+              Since our founding, we've delivered 50+ projects for clients across Kenya and beyond — from small churches in rural areas to growing businesses in Nairobi. Our mission: build websites that perform, convert, and grow with your ministry or business.
             </p>
           </motion.div>
         </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-display font-extrabold">Our Team</h2>
-            <p className="mt-4 text-muted-foreground">Small team. Big results. We keep things lean and focused.</p>
+            <p className="mt-4 text-muted-foreground">Small team. Big results.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {team.map((member, i) => (

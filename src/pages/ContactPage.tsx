@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,35 +7,54 @@ import { WHATSAPP_URL, WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/lib/constants";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { fadeUp } from "@/lib/animations";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactMethods = [
   { icon: MessageCircle, title: "WhatsApp", value: PHONE_DISPLAY, description: "Fastest way to reach us", link: WHATSAPP_URL },
   { icon: Phone, title: "Phone", value: PHONE_DISPLAY, description: "Available during business hours" },
-  { icon: Mail, title: "Email", value: "hello@webcraftke.com", description: "We reply within 24 hours" },
+  { icon: Mail, title: "Email", value: "hello@omnexus.co.ke", description: "We reply within 24 hours" },
   { icon: MapPin, title: "Location", value: "Nairobi, Kenya", description: "Serving clients worldwide" },
 ];
 
 export default function ContactPage() {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.message.trim()) {
       toast({ title: "Please fill required fields", variant: "destructive" });
       return;
     }
 
-    const lines = [
-      `Contact from: ${form.name.trim().slice(0, 100)}`,
-      form.email ? `Email: ${form.email.trim().slice(0, 100)}` : "",
-      form.subject ? `Subject: ${form.subject.trim().slice(0, 100)}` : "",
-      "",
-      form.message.trim().slice(0, 500),
-    ].filter(Boolean).join("\n");
+    setLoading(true);
+    try {
+      const { error } = await supabase.from("contact_submissions").insert({
+        name: form.name.trim().slice(0, 100),
+        email: form.email.trim().slice(0, 100) || null,
+        subject: form.subject.trim().slice(0, 100) || null,
+        message: form.message.trim().slice(0, 500),
+      });
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`, "_blank");
-    toast({ title: "Opening WhatsApp!", description: "Send us your message there." });
+      if (error) throw error;
+
+      toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      // Fallback to WhatsApp
+      const lines = [
+        `Contact from: ${form.name.trim().slice(0, 100)}`,
+        form.email ? `Email: ${form.email.trim().slice(0, 100)}` : "",
+        form.subject ? `Subject: ${form.subject.trim().slice(0, 100)}` : "",
+        "",
+        form.message.trim().slice(0, 500),
+      ].filter(Boolean).join("\n");
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`, "_blank");
+      toast({ title: "Opening WhatsApp!", description: "Send us your message there." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,7 +67,7 @@ export default function ContactPage() {
               Let's <span className="text-gradient-primary">Talk</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a question, a project idea, or just want to say hello? We're always happy to hear from you. Reach out through any of the channels below.
+              Have a question, a project idea, or just want to say hello? We're always happy to hear from you.
             </p>
           </motion.div>
         </div>
@@ -56,7 +75,6 @@ export default function ContactPage() {
 
       <section className="pb-24">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Contact cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {contactMethods.map((method, i) => (
               <motion.div
@@ -84,7 +102,6 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Contact form */}
           <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl font-display font-extrabold mb-4">Send Us a Message</h2>
@@ -108,9 +125,9 @@ export default function ContactPage() {
                   <label className="text-sm font-medium mb-2 block">Message *</label>
                   <Textarea placeholder="Tell us about your project or question..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5} maxLength={500} className="bg-muted border-border" />
                 </div>
-                <Button type="submit" size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 w-full h-12">
+                <Button type="submit" size="lg" disabled={loading} className="bg-gradient-primary text-primary-foreground hover:opacity-90 w-full h-12">
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </motion.div>
@@ -144,7 +161,7 @@ export default function ContactPage() {
               <div className="mt-6 p-6 rounded-2xl bg-primary/5 border border-primary/20">
                 <h3 className="font-display font-bold text-lg mb-2">Prefer WhatsApp?</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Most of our clients prefer chatting on WhatsApp for quick responses. Tap below to start a conversation instantly.
+                  Most of our clients prefer chatting on WhatsApp for quick responses.
                 </p>
                 <Button asChild className="bg-gradient-primary text-primary-foreground hover:opacity-90 w-full">
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
@@ -152,6 +169,12 @@ export default function ContactPage() {
                     Chat on WhatsApp
                   </a>
                 </Button>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
+                {["Free consultation", "Reply within 24hrs", "No commitment"].map(t => (
+                  <span key={t} className="flex items-center gap-1"><CheckCircle2 className="h-4 w-4 text-primary" />{t}</span>
+                ))}
               </div>
             </motion.div>
           </div>

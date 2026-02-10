@@ -61,7 +61,7 @@ export const portfolioProjects: PortfolioProject[] = [
     category: "Education",
     description:
       "A dedicated KCSE exam resource platform under the Azani ISP brand — providing study guides, past papers, and project support materials for Kenyan high school students.",
-    url: "https://www.kcse.azaniispproject.co.ke/",
+    url: "https://kcse.azaniispproject.co.ke/",
     tags: ["Education", "KCSE", "Resources"],
     image: portfolioKcse,
     status: "completed",
