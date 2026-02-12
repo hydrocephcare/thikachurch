@@ -56,7 +56,7 @@ export default function Footer() {
 
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-display font-bold text-foreground mb-4">{title}</h4>
+              <h3 className="font-display font-bold text-foreground mb-4 text-base">{title}</h3>
               <div className="flex flex-col gap-2.5">
                 {links.map(link => (
                   <Link key={link.label} to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">

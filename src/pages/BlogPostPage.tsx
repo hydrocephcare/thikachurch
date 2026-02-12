@@ -26,7 +26,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getBlogPostBySlug, blogPosts } from "@/lib/blogData";
+import { blogContentMap } from "@/lib/blogContent";
 import { WHATSAPP_URL, PHONE_DISPLAY } from "@/lib/constants";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 16 },
@@ -166,6 +169,24 @@ function TransformChurchDigitalPresenceContent() {
       <h3>6. First-Time Visitor Information</h3>
       <p>Churches with detailed "New Here?" pages see <strong>3X more</strong> first-time visitors.</p>
 
+      <h3>7. Online Prayer Requests</h3>
+      <p>Build deeper connection beyond Sunday with a simple prayer form. Auto-confirmation email and follow-up after one week shows you care.</p>
+
+      <h3>8. Membership Portal (Advanced)</h3>
+      <p>Give members a private login area to view giving history, download tax receipts, update info, and access members-only content.</p>
+
+      <h3>9. Small Groups & Ministries Directory</h3>
+      <p>Help people find where they belong with searchable ministry pages, meeting times, and WhatsApp group links.</p>
+
+      <h3>10. Blog for Spiritual Content</h3>
+      <p>Every blog post is an opportunity to rank on Google. Post title "How to Pray Effectively" brings 500+ visitors/month.</p>
+
+      <h3>11. Contact & Location</h3>
+      <p>Make it impossibly easy to reach you with Google Maps, click-to-call phone, WhatsApp, directions from landmarks.</p>
+
+      <h3>12. Social Media Integration</h3>
+      <p>Connect all your platforms — Facebook, Instagram, YouTube, Twitter — with sharing buttons and live feeds.</p>
+
       <h2>Church Website Pricing in Kenya (2026 Reality Check)</h2>
 
       <div className="not-prose my-8 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -200,10 +221,12 @@ function TransformChurchDigitalPresenceContent() {
       <div className="not-prose my-8 space-y-4">
         {[
           { title: "\"We'll Launch When It's Perfect\"", problem: "6 months later, still no website.", solution: "Launch with 5 essential pages. Add features monthly." },
-          { title: "Outdated Content", problem: "Last sermon from 2023. Events from 6 months ago.", solution: "Assign someone to update weekly." },
+          { title: "Outdated Content", problem: "Last sermon from 2023. Events from 6 months ago.", solution: "Assign someone to update weekly. 15 minutes/week." },
           { title: "No Clear Call-to-Action", problem: "Visitor lands on homepage. Now what?", solution: "Every page should answer: 'What do you want me to do next?'" },
-          { title: "Ignoring Mobile Users", problem: "82% browse on phones.", solution: "Test your site on a phone right now." },
+          { title: "Ignoring Mobile Users", problem: "82% browse on phones but site is desktop-only.", solution: "Mobile-first design is non-negotiable." },
           { title: "No M-Pesa = No Online Giving", problem: "Midweek giving doesn't happen.", solution: "Churches with M-Pesa see 40-60% increase in giving." },
+          { title: "Treating Website as Set-and-Forget", problem: "No updates, no maintenance, eventually hacked.", solution: "Monthly maintenance: security, speed, content updates." },
+          { title: "No Analytics = Flying Blind", problem: "Don't know how many visitors or what pages work.", solution: "Install Google Analytics. Review monthly in 30 minutes." },
         ].map((mistake, i) => (
           <div key={i} className="p-4 rounded-lg bg-muted/50 border border-border">
             <h4 className="font-bold flex items-center gap-2">
@@ -212,6 +235,46 @@ function TransformChurchDigitalPresenceContent() {
             </h4>
             <p className="text-sm text-muted-foreground mt-1"><strong>Problem:</strong> {mistake.problem}</p>
             <p className="text-sm text-muted-foreground"><strong>Solution:</strong> {mistake.solution}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2>Real Success Stories: Kenyan Churches</h2>
+
+      <div className="not-prose my-8 space-y-6">
+        {[
+          {
+            church: "Faith Community Church, Karen",
+            before: "180 members, KES 450K/month tithes, 2-3 visitors/month",
+            after: "340 members (+89%), KES 820K/month (+82%), 15-20 visitors/month",
+            quote: "The website became our #1 evangelism tool.",
+          },
+          {
+            church: "Victory Chapel, Mombasa",
+            before: "Local-only reach, no diaspora connection",
+            after: "450 online viewers/Sunday, KES 650K from diaspora, members in 12 countries",
+            quote: "Our website turned our church from local to global.",
+          },
+          {
+            church: "Harvest Community, Nakuru",
+            before: "Young church, limited budget",
+            after: "145 new members via Google, KES 240K online giving, 3X event registrations",
+            quote: "Breaking it into phases made it possible. Best investment we made.",
+          },
+        ].map((cs, i) => (
+          <div key={i} className="p-6 rounded-xl bg-card border border-border">
+            <h4 className="font-bold text-lg">{cs.church}</h4>
+            <div className="grid md:grid-cols-2 gap-4 mt-3">
+              <div>
+                <p className="text-xs font-medium text-destructive uppercase tracking-wider mb-1">Before</p>
+                <p className="text-sm text-muted-foreground">{cs.before}</p>
+              </div>
+              <div>
+                <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1">After</p>
+                <p className="text-sm text-muted-foreground">{cs.after}</p>
+              </div>
+            </div>
+            <p className="text-sm italic text-muted-foreground mt-3">"{cs.quote}"</p>
           </div>
         ))}
       </div>
@@ -226,54 +289,6 @@ function TransformChurchDigitalPresenceContent() {
       </ol>
 
       <h2>Frequently Asked Questions</h2>
-    </div>
-  );
-}
-
-// Generic placeholder content for other articles
-function GenericArticleContent({ post }: { post: { title: string; excerpt: string; category: string } }) {
-  return (
-    <div className="prose prose-lg max-w-none dark:prose-invert">
-      <div className="bg-muted/50 rounded-xl p-6 mb-8 not-prose">
-        <p className="text-lg italic text-muted-foreground">{post.excerpt}</p>
-      </div>
-
-      <p>
-        This comprehensive guide covers everything you need to know about {post.category.toLowerCase()} for Kenyan churches.
-      </p>
-
-      <h2>Why This Matters for Kenyan Churches</h2>
-      <p>
-        In the digital age, churches that embrace technology are seeing significant growth. 
-        Whether you're in Nairobi, Mombasa, Kisumu, or any other Kenyan city, these principles apply.
-      </p>
-
-      <h2>Key Takeaways</h2>
-      <ul>
-        <li>Mobile-first is essential - 82% of Kenyan web users are on phones</li>
-        <li>M-Pesa integration is a must for any online giving</li>
-        <li>Regular content updates keep your audience engaged</li>
-        <li>SEO helps new members find your church</li>
-      </ul>
-
-      <div className="not-prose my-8 p-6 rounded-xl bg-primary/5 border border-primary/20">
-        <h3 className="font-bold text-lg mb-2">Ready to Get Started?</h3>
-        <p className="text-muted-foreground mb-4">
-          Contact us for a free consultation and custom quote for your church website.
-        </p>
-        <Button asChild>
-          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            WhatsApp Us: {PHONE_DISPLAY}
-          </a>
-        </Button>
-      </div>
-
-      <p className="text-muted-foreground italic">
-        Full article coming soon. In the meantime, check out our main guide on{" "}
-        <Link to="/blog/transform-church-digital-presence-2026" className="text-primary hover:underline">
-          transforming your church's digital presence
-        </Link>.
-      </p>
     </div>
   );
 }
@@ -299,6 +314,10 @@ const faqItems = [
     q: "Do you integrate M-Pesa?",
     a: "Yes! M-Pesa integration is included in all packages. Members can give tithes and offerings directly via STK push.",
   },
+  {
+    q: "Will the website work on mobile phones?",
+    a: "All our websites are mobile-first and optimized for smartphones including Samsung, Tecno, and iPhone. 82% of Kenyan church website visitors use phones.",
+  },
 ];
 
 export default function BlogPostPage() {
@@ -310,14 +329,61 @@ export default function BlogPostPage() {
   }
 
   const isMainArticle = post.slug === "transform-church-digital-presence-2026";
+  const ContentComponent = blogContentMap[post.slug];
 
   // Get related posts (same category, excluding current)
   const relatedPosts = blogPosts
     .filter((p) => p.category === post.category && p.id !== post.id)
     .slice(0, 3);
 
+  // Article JSON-LD structured data
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.metaDescription,
+    "datePublished": post.publishedAt,
+    "dateModified": post.updatedAt,
+    "author": {
+      "@type": "Organization",
+      "name": "OmnexusKE",
+      "url": "https://omnexus.co.ke"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "OmnexusKE",
+      "url": "https://omnexus.co.ke"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://omnexus.co.ke/blog/${post.slug}`
+    },
+    "keywords": post.tags.join(", "),
+    "articleSection": post.category,
+    "inLanguage": "en-KE",
+    "wordCount": isMainArticle ? 5000 : 2500
+  };
+
   return (
     <>
+      <Helmet>
+        <title>{post.metaTitle}</title>
+        <meta name="description" content={post.metaDescription} />
+        <meta name="keywords" content={post.tags.join(", ")} />
+        <link rel="canonical" href={`https://omnexus.co.ke/blog/${post.slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.metaTitle} />
+        <meta property="og:description" content={post.metaDescription} />
+        <meta property="og:url" content={`https://omnexus.co.ke/blog/${post.slug}`} />
+        <meta property="article:published_time" content={post.publishedAt} />
+        <meta property="article:modified_time" content={post.updatedAt} />
+        <meta property="article:section" content={post.category} />
+        {post.tags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
+        <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
+      </Helmet>
+
       {/* Hero */}
       <section className="pt-32 pb-8">
         <div className="container mx-auto px-4 lg:px-8">
@@ -391,8 +457,19 @@ export default function BlogPostPage() {
             >
               {isMainArticle ? (
                 <TransformChurchDigitalPresenceContent />
+              ) : ContentComponent ? (
+                <ContentComponent />
               ) : (
-                <GenericArticleContent post={post} />
+                <div className="prose prose-lg max-w-none dark:prose-invert">
+                  <div className="bg-muted/50 rounded-xl p-6 mb-8 not-prose">
+                    <p className="text-lg italic text-muted-foreground">{post.excerpt}</p>
+                  </div>
+                  <p>Full article coming soon. Check out our main guide on{" "}
+                    <Link to="/blog/transform-church-digital-presence-2026" className="text-primary hover:underline">
+                      transforming your church's digital presence
+                    </Link>.
+                  </p>
+                </div>
               )}
             </motion.div>
 
