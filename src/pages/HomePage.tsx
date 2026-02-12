@@ -82,7 +82,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="Church website development Kenya" className="w-full h-full object-cover" loading="eager" />
+          <img src={heroBg} alt="Church website development Kenya" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-background/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
         </div>
@@ -233,8 +233,9 @@ export default function HomePage() {
                   <h3 className="text-base font-display font-bold text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
                   <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2">{project.description}</p>
                   <a href={project.url} target="_blank" rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
-                    Visit Site <ExternalLink className="h-3 w-3" />
+                    className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                    aria-label={`Visit ${project.title} website`}>
+                    Visit {project.title} <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
               </motion.div>
