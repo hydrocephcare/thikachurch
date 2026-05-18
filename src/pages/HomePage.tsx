@@ -91,25 +91,25 @@ export default function HomePage() {
           <div className="max-w-3xl">
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-              #1 Church Website Developer in Kenya 🇰🇪
+              #1 Website Developer in Kenya 🇰🇪
             </motion.span>
 
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5 }}
               className="mt-8 text-4xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.05] tracking-tight text-foreground">
-              Professional Church
+              Make a Website
               <br />
-              <span className="text-gradient-primary">Website Design</span> Kenya
+              <span className="text-gradient-primary">in Kenya</span> — Fast
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}
               className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Transform your church's digital presence with M-Pesa donations, live streaming, sermon archives & mobile-first design. From KES 5,000.
+              Professional websites for churches, businesses, e-commerce, schools, marketplaces and personal brands. M-Pesa integration, mobile-first design, SEO that ranks. From KES 5,000.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.5 }}
               className="mt-8 flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 h-12 px-7">
-                <Link to="/order">Get Your Church Website <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/order">Order Your Website <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-border text-foreground hover:bg-muted h-12 px-7">
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
@@ -139,12 +139,12 @@ export default function HomePage() {
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-14">
-            <span className="text-sm font-medium text-primary uppercase tracking-widest">Why Churches Choose Us</span>
+            <span className="text-sm font-medium text-primary uppercase tracking-widest">Why Kenya Chooses Us</span>
             <h2 className="mt-3 text-3xl md:text-4xl font-display font-extrabold text-foreground">
-              Built Specifically for Kenyan Churches
+              Built Specifically for the Kenyan Web
             </h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              International templates don't work in Kenya. We build church websites with M-Pesa, not PayPal.
+              From churches and schools to marketplaces and SMEs — we build with M-Pesa, not PayPal, and design mobile-first for real Kenyan networks.
             </p>
           </motion.div>
 

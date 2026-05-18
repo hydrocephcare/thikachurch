@@ -2,6 +2,9 @@ import portfolioMkucu from "@/assets/portfolio-mkucu.png";
 import portfolioMedlife from "@/assets/portfolio-medlife.png";
 import portfolioAzaniisp from "@/assets/portfolio-azaniisp.png";
 import portfolioKcse from "@/assets/portfolio-kcse.jpg";
+import portfolioKenyaAdvertsCom from "@/assets/portfolio-kenyaadverts-com.png";
+import portfolioKenyaAdvertsCoke from "@/assets/portfolio-kenyaadverts-coke.png";
+import portfolioOmpath from "@/assets/portfolio-ompathstudy.png";
 
 export const WHATSAPP_NUMBER = "254115475543";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in your web development services.")}`;
@@ -22,6 +25,39 @@ export interface PortfolioProject {
 }
 
 export const portfolioProjects: PortfolioProject[] = [
+  {
+    id: "kenyaadverts-com",
+    title: "Kenya Adverts Marketplace",
+    category: "E-Commerce",
+    description:
+      "Kenya's own classifieds marketplace covering all 47 counties — cars, phones, property, jobs and more. M-Pesa secure transactions, free posting, and a mobile-first listing experience built for 50K+ buyers.",
+    url: "https://www.kenyaadverts.com",
+    tags: ["Marketplace", "Classifieds", "M-Pesa", "E-Commerce"],
+    image: portfolioKenyaAdvertsCom,
+    status: "completed",
+  },
+  {
+    id: "ompath-study",
+    title: "Ompath Study",
+    category: "Education",
+    description:
+      "A comprehensive medical education platform for East African MBChB students — high-yield notes, MCQ banks, flashcards, past papers and clinical stories organised by year and unit.",
+    url: "https://ompathstudy.com",
+    tags: ["Education", "Medical", "MCQ Bank", "Flashcards"],
+    image: portfolioOmpath,
+    status: "completed",
+  },
+  {
+    id: "kenyaadverts-coke",
+    title: "KenyaAdverts.co.ke",
+    category: "Business",
+    description:
+      "A Kenyan web development showcase — professional websites with M-Pesa donations, live streaming and mobile-first design, serving churches, ministries and businesses across Kenya.",
+    url: "https://www.kenyaadverts.co.ke",
+    tags: ["Business", "Agency", "M-Pesa", "SEO"],
+    image: portfolioKenyaAdvertsCoke,
+    status: "completed",
+  },
   {
     id: "mku-cu",
     title: "MKU Christian Union",
