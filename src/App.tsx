@@ -22,6 +22,9 @@ import GlobalSeoLandingPage from "@/pages/GlobalSeoLandingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+const routerBasename = import.meta.env.BASE_URL === "/"
+  ? undefined
+  : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const seoSlugs = [
   "business-website-design-kenya", "ecommerce-website-design-kenya", "online-store-development-kenya", "blog-website-design-kenya", "news-website-development-kenya", "video-streaming-website-kenya", "youtube-like-website-development", "netflix-like-streaming-platform", "marketplace-website-development-kenya", "school-website-design-kenya", "custom-web-application-development-kenya",
@@ -37,7 +40,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={routerBasename}>
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
