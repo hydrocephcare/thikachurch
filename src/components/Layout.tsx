@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import RouteSeo from "@/components/RouteSeo";
+import StartingPriceBanner from "@/components/StartingPriceBanner";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -19,6 +20,7 @@ export default function Layout() {
       <ScrollToTop />
       <RouteSeo />
       <Navbar />
+      <StartingPriceBanner />
       <main className="flex-1">
         <Outlet />
       </main>
