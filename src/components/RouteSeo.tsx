@@ -10,8 +10,8 @@ const routeSeo: Record<string, { title: string; description: string }> = {
     description: "KenyaAdverts designs and develops modern websites, e-commerce stores, marketplaces, education platforms and custom web applications for businesses and organisations worldwide.",
   },
   "/portfolio": {
-    title: "Web Design Portfolio | Websites & Web Applications | KenyaAdverts",
-    description: "Explore real websites and web applications built across business, e-commerce, education, marketplaces, publishing and organisations.",
+    title: "Web Design Portfolio | Real Websites & Web Apps | KenyaAdverts",
+    description: "Explore real KenyaAdverts websites and web applications across business, marketplaces, e-commerce, education, publishing and organisations. View live projects and start your own build.",
   },
   "/services": {
     title: "Web Design & Development Services Worldwide | KenyaAdverts",
@@ -52,6 +52,14 @@ export default function RouteSeo() {
     : { ...(routeSeo[pathname] ?? routeSeo["/"]), type: "website" as const };
 
   const canonical = `${SITE}${pathname === "/" ? "/" : pathname}`;
+  const breadcrumbJsonLd = pathname !== "/" ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: blogPost ? "Blog" : (routeSeo[pathname]?.title?.split("|")[0]?.trim() || "Page"), item: canonical },
+    ],
+  } : null;
 
   return (
     <Helmet>
@@ -71,6 +79,7 @@ export default function RouteSeo() {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={`${SITE}/og-image.jpg`} />
+      {breadcrumbJsonLd && <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>}
     </Helmet>
   );
 }
