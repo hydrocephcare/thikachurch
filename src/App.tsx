@@ -17,9 +17,24 @@ import AdminPage from "@/pages/AdminPage";
 import AdminAppointmentsPage from "@/pages/AdminAppointmentsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
+import SeoLandingPage from "@/pages/SeoLandingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+const seoSlugs = [
+  "business-website-design-kenya",
+  "ecommerce-website-design-kenya",
+  "online-store-development-kenya",
+  "blog-website-design-kenya",
+  "news-website-development-kenya",
+  "video-streaming-website-kenya",
+  "youtube-like-website-development",
+  "netflix-like-streaming-platform",
+  "marketplace-website-development-kenya",
+  "school-website-design-kenya",
+  "custom-web-application-development-kenya",
+];
 
 const App = () => (
   <HelmetProvider>
@@ -40,6 +55,7 @@ const App = () => (
               <Route path="/book-appointment" element={<BookAppointmentPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              {seoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<SeoLandingPage />} />)}
             </Route>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/appointments" element={<AdminAppointmentsPage />} />
