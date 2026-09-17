@@ -48,13 +48,50 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 160 65% 38%;
 
-    /* Custom tokens */
     --glow-primary: 0 0 30px hsl(160 65% 38% / 0.1);
     --glow-secondary: 0 0 30px hsl(38 90% 55% / 0.1);
     --gradient-primary: linear-gradient(135deg, hsl(160 65% 38%), hsl(160 55% 30%));
     --gradient-gold: linear-gradient(135deg, hsl(38 90% 55%), hsl(32 85% 45%));
     --gradient-dark: linear-gradient(180deg, hsl(220 20% 98%), hsl(220 14% 96%));
     --gradient-card: linear-gradient(145deg, hsl(220 20% 98%), hsl(0 0% 100%));
+  }
+
+  .dark {
+    --background: 220 18% 10%;
+    --foreground: 210 25% 94%;
+    --card: 220 16% 14%;
+    --card-foreground: 210 25% 94%;
+    --popover: 220 16% 14%;
+    --popover-foreground: 210 25% 94%;
+    --primary: 160 65% 45%;
+    --primary-foreground: 220 20% 8%;
+    --secondary: 220 14% 19%;
+    --secondary-foreground: 210 25% 94%;
+    --muted: 220 14% 18%;
+    --muted-foreground: 215 14% 68%;
+    --accent: 160 60% 40%;
+    --accent-foreground: 210 25% 96%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --warning: 38 90% 55%;
+    --warning-foreground: 220 20% 8%;
+    --border: 220 14% 25%;
+    --input: 220 14% 25%;
+    --ring: 160 65% 45%;
+    --sidebar-background: 220 18% 11%;
+    --sidebar-foreground: 210 25% 94%;
+    --sidebar-primary: 160 65% 45%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 14% 19%;
+    --sidebar-accent-foreground: 210 25% 94%;
+    --sidebar-border: 220 14% 25%;
+    --sidebar-ring: 160 65% 45%;
+    --glow-primary: 0 0 30px hsl(160 65% 45% / 0.16);
+    --glow-secondary: 0 0 30px hsl(38 90% 55% / 0.12);
+    --gradient-primary: linear-gradient(135deg, hsl(160 65% 45%), hsl(160 55% 35%));
+    --gradient-gold: linear-gradient(135deg, hsl(38 90% 55%), hsl(32 85% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 18% 12%), hsl(220 16% 15%));
+    --gradient-card: linear-gradient(145deg, hsl(220 16% 16%), hsl(220 16% 13%));
   }
 }
 
@@ -71,19 +108,18 @@
     @apply font-display;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(0 0% 98%);
+    background: hsl(var(--background));
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(220 13% 82%);
+    background: hsl(var(--border));
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(160 65% 38% / 0.5);
+    background: hsl(var(--primary) / 0.5);
   }
 }
 
@@ -92,59 +128,32 @@
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-primary);
   }
-
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-gold);
   }
-
-  .bg-gradient-primary {
-    background-image: var(--gradient-primary);
-  }
-
-  .bg-gradient-gold {
-    background-image: var(--gradient-gold);
-  }
-
-  .bg-gradient-dark {
-    background-image: var(--gradient-dark);
-  }
-
-  .bg-gradient-card {
-    background-image: var(--gradient-card);
-  }
-
-  .glow-primary {
-    box-shadow: var(--glow-primary);
-  }
-
-  .glow-secondary {
-    box-shadow: var(--glow-secondary);
-  }
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-gold { background-image: var(--gradient-gold); }
+  .bg-gradient-dark { background-image: var(--gradient-dark); }
+  .bg-gradient-card { background-image: var(--gradient-card); }
+  .glow-primary { box-shadow: var(--glow-primary); }
+  .glow-secondary { box-shadow: var(--glow-secondary); }
 
   .glass {
     @apply backdrop-blur-xl;
-    background: hsl(0 0% 100% / 0.8);
-    border: 1px solid hsl(220 13% 91% / 0.8);
+    background: hsl(var(--background) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.8);
   }
-
   .glass-strong {
     @apply backdrop-blur-2xl;
-    background: hsl(0 0% 100% / 0.95);
-    border: 1px solid hsl(220 13% 91%);
+    background: hsl(var(--background) / 0.95);
+    border: 1px solid hsl(var(--border));
   }
-
-  .border-glow {
-    border: 1px solid hsl(160 65% 38% / 0.2);
-  }
-
-  .border-glow-gold {
-    border: 1px solid hsl(38 90% 55% / 0.2);
-  }
+  .border-glow { border: 1px solid hsl(var(--primary) / 0.2); }
+  .border-glow-gold { border: 1px solid hsl(var(--warning) / 0.2); }
 }
 
-/* Selection color */
 ::selection {
-  background: hsl(160 65% 38% / 0.15);
-  color: hsl(220 20% 12%);
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
 }
