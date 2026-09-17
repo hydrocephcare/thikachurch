@@ -14,8 +14,8 @@ import { blogPosts } from "@/lib/blogData";
 
 const serviceCards = [
   { icon: BriefcaseBusiness, title: "Business Websites", description: "Professional websites that make your business credible and turn visitors into enquiries." },
-  { icon: ShoppingCart, title: "E-Commerce", description: "Online shops with products, orders, mobile-first checkout and M-Pesa options." },
-  { icon: Church, title: "Church & Organisations", description: "Modern websites for churches, ministries, NGOs, clubs and community organisations." },
+  { icon: ShoppingCart, title: "E-Commerce", description: "Online shops with products, orders, mobile-first checkout and payment options for your market." },
+  { icon: Church, title: "Church & Organisations", description: "Modern websites for churches, ministries, NGOs, clubs and community organisations worldwide." },
   { icon: GraduationCap, title: "Schools & Education", description: "Education websites, resource hubs, learning platforms and student-focused portals." },
   { icon: Code2, title: "Custom Web Apps", description: "Dashboards, portals, management systems and other software built around your workflow." },
   { icon: Users, title: "Personal Websites", description: "Portfolio and personal brand websites for professionals, creatives and freelancers." },
@@ -24,7 +24,7 @@ const serviceCards = [
 const reasons = [
   { icon: Smartphone, title: "Mobile-first", description: "Designed to work beautifully on phones, tablets and computers." },
   { icon: Zap, title: "Fast & modern", description: "Clean interfaces and performance-focused development." },
-  { icon: Search, title: "SEO-ready", description: "A strong technical foundation for Google visibility." },
+  { icon: Search, title: "SEO-ready", description: "A strong technical foundation for search visibility in the markets you serve." },
   { icon: Shield, title: "Secure & maintainable", description: "Reliable code, sensible structure and ongoing support when you need it." },
 ];
 
@@ -94,13 +94,13 @@ export default function HomePage() {
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-28 pb-20">
           <div className="max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-semibold">
-              <Globe className="h-4 w-4" /> Website Design & Development in Kenya
+              <Globe className="h-4 w-4" /> Website Design & Development Worldwide
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mt-7 text-4xl md:text-6xl lg:text-7xl font-display font-extrabold leading-[1.02] tracking-tight">
               We build websites that help <span className="text-gradient-primary">your business grow.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 }} className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              From business websites and online shops to church, school and custom web applications — we design and build for real people and real businesses in Kenya.
+              From business websites and online shops to marketplaces, education platforms and custom web applications — we design and build for real people, organisations and businesses worldwide.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }} className="mt-8 flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 h-13 px-7">
@@ -112,7 +112,7 @@ export default function HomePage() {
             </motion.div>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />Mobile-first</span>
-              <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />M-Pesa ready</span>
+              <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />Global-ready</span>
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />SEO-ready</span>
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />Custom builds</span>
             </div>
@@ -123,7 +123,7 @@ export default function HomePage() {
       <section className="py-14 border-y border-border bg-card/40">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[["7+", "Projects & platforms shown"], ["6+", "Website categories"], ["Kenya", "Built for local needs"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
+            {[["7+", "Projects & platforms shown"], ["6+", "Website categories"], ["Worldwide", "Clients & markets"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
               <div key={label}><div className="text-2xl md:text-3xl font-display font-extrabold text-primary">{value}</div><div className="mt-1 text-sm text-muted-foreground">{label}</div></div>
             ))}
           </div>
@@ -137,146 +137,28 @@ export default function HomePage() {
             <h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Not sure what you need?</h2>
             <p className="mt-4 text-muted-foreground text-lg">Answer a few quick questions and we will point you toward a suitable starting direction. No price calculator — just a smarter way to start the conversation.</p>
           </div>
-
           <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-card shadow-xl overflow-hidden">
             <div className="h-1.5 bg-muted"><div className="h-full bg-gradient-primary transition-all duration-500" style={{ width: `${plannerStep * 33.33}%` }} /></div>
             <div className="p-6 md:p-10">
-              {plannerStep === 1 && (
-                <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
-                  <p className="text-sm font-semibold text-primary">STEP 1 OF 3</p>
-                  <h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">What are you trying to achieve?</h3>
-                  <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {plannerGoals.map((item) => {
-                      const Icon = item.icon;
-                      const selected = goal === item.id;
-                      return <button key={item.id} type="button" onClick={() => setGoal(item.id)} className={`text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10 shadow-sm" : "border-border hover:border-primary/40 hover:bg-muted/40"}`}><Icon className={`h-5 w-5 ${selected ? "text-primary" : "text-muted-foreground"}`} /><span className="mt-3 block font-semibold">{item.label}</span></button>;
-                    })}
-                  </div>
-                  <div className="mt-7 flex justify-end"><Button disabled={!goal} onClick={() => setPlannerStep(2)}>Continue <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
-                </motion.div>
-              )}
-
-              {plannerStep === 2 && (
-                <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
-                  <p className="text-sm font-semibold text-primary">STEP 2 OF 3</p>
-                  <h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">Which features might you need?</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">Select as many as you like. We will confirm the right setup during consultation.</p>
-                  <div className="mt-7 grid sm:grid-cols-2 gap-3">
-                    {plannerFeatures.map((feature) => {
-                      const selected = features.includes(feature);
-                      return <button key={feature} type="button" onClick={() => toggleFeature(feature)} className={`flex items-center gap-3 text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"}`}><span className={`w-6 h-6 rounded-md border flex items-center justify-center ${selected ? "bg-primary border-primary text-primary-foreground" : "border-border"}`}>{selected && <CheckCircle2 className="h-4 w-4" />}</span><span className="font-medium">{feature}</span></button>;
-                    })}
-                  </div>
-                  <div className="mt-7 flex justify-between"><Button variant="ghost" onClick={() => setPlannerStep(1)}>Back</Button><Button onClick={() => setPlannerStep(3)}>See my direction <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
-                </motion.div>
-              )}
-
-              {plannerStep === 3 && (
-                <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}>
-                  <div className="text-center">
-                    <div className="mx-auto w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"><Sparkles className="h-7 w-7 text-primary" /></div>
-                    <p className="mt-5 text-sm font-semibold text-primary uppercase tracking-widest">Your project direction</p>
-                    <h3 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">{recommendation.title}</h3>
-                    <p className="mt-4 max-w-2xl mx-auto text-muted-foreground leading-relaxed">{recommendation.text}</p>
-                  </div>
-                  <div className="mt-7 rounded-2xl bg-muted/50 border border-border p-5">
-                    <p className="text-sm font-semibold">Features you selected</p>
-                    <div className="mt-3 flex flex-wrap gap-2">{features.length ? features.map((feature) => <span key={feature} className="px-3 py-1.5 rounded-full bg-background border border-border text-sm">{feature}</span>) : <span className="text-sm text-muted-foreground">No specific features selected yet.</span>}</div>
-                  </div>
-                  <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary"><Link to={`/book-appointment?project=${encodeURIComponent(recommendation.title)}`}>Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />Discuss on WhatsApp</a></Button><Button variant="ghost" onClick={resetPlanner}><RotateCcw className="mr-2 h-4 w-4" />Start over</Button></div>
-                  <p className="mt-5 text-center text-xs text-muted-foreground">This is a project-direction tool, not an automatic quote. We discuss scope and requirements before providing a proposal.</p>
-                </motion.div>
-              )}
+              {plannerStep === 1 && <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}><p className="text-sm font-semibold text-primary">STEP 1 OF 3</p><h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">What are you trying to achieve?</h3><div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">{plannerGoals.map((item) => { const Icon = item.icon; const selected = goal === item.id; return <button key={item.id} type="button" onClick={() => setGoal(item.id)} className={`text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10 shadow-sm" : "border-border hover:border-primary/40 hover:bg-muted/40"}`}><Icon className={`h-5 w-5 ${selected ? "text-primary" : "text-muted-foreground"}`} /><span className="mt-3 block font-semibold">{item.label}</span></button>; })}</div><div className="mt-7 flex justify-end"><Button disabled={!goal} onClick={() => setPlannerStep(2)}>Continue <ArrowRight className="ml-2 h-4 w-4" /></Button></div></motion.div>}
+              {plannerStep === 2 && <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}><p className="text-sm font-semibold text-primary">STEP 2 OF 3</p><h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">Which features might you need?</h3><p className="mt-2 text-sm text-muted-foreground">Select as many as you like. We will confirm the right setup during consultation.</p><div className="mt-7 grid sm:grid-cols-2 gap-3">{plannerFeatures.map((feature) => { const selected = features.includes(feature); return <button key={feature} type="button" onClick={() => toggleFeature(feature)} className={`flex items-center gap-3 text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"}`}><span className={`w-6 h-6 rounded-md border flex items-center justify-center ${selected ? "bg-primary border-primary text-primary-foreground" : "border-border"}`}>{selected && <CheckCircle2 className="h-4 w-4" />}</span><span className="font-medium">{feature}</span></button>; })}</div><div className="mt-7 flex justify-between"><Button variant="ghost" onClick={() => setPlannerStep(1)}>Back</Button><Button onClick={() => setPlannerStep(3)}>See my direction <ArrowRight className="ml-2 h-4 w-4" /></Button></div></motion.div>}
+              {plannerStep === 3 && <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}><div className="text-center"><div className="mx-auto w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"><Sparkles className="h-7 w-7 text-primary" /></div><p className="mt-5 text-sm font-semibold text-primary uppercase tracking-widest">Your project direction</p><h3 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">{recommendation.title}</h3><p className="mt-4 max-w-2xl mx-auto text-muted-foreground leading-relaxed">{recommendation.text}</p></div><div className="mt-7 rounded-2xl bg-muted/50 border border-border p-5"><p className="text-sm font-semibold">Features you selected</p><div className="mt-3 flex flex-wrap gap-2">{features.length ? features.map((feature) => <span key={feature} className="px-3 py-1.5 rounded-full bg-background border border-border text-sm">{feature}</span>) : <span className="text-sm text-muted-foreground">No specific features selected yet.</span>}</div></div><div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary"><Link to={`/book-appointment?project=${encodeURIComponent(recommendation.title)}`}>Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />Discuss on WhatsApp</a></Button><Button variant="ghost" onClick={resetPlanner}><RotateCcw className="mr-2 h-4 w-4" />Start over</Button></div><p className="mt-5 text-center text-xs text-muted-foreground">This is a project-direction tool, not an automatic quote. We discuss scope and requirements before providing a proposal.</p></motion.div>}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-2xl mb-12">
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest">What we build</span>
-            <h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">One team. Many kinds of websites.</h2>
-            <p className="mt-4 text-muted-foreground text-lg">Whether you are launching a business, selling online, building a community or creating a custom system, we can build around your goals.</p>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {serviceCards.map((service) => (
-              <motion.div key={service.title} variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:-translate-y-1 transition-all">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center"><service.icon className="h-5 w-5 text-primary" /></div>
-                <h3 className="mt-5 text-xl font-display font-bold">{service.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                <Link to="/services" className="mt-4 inline-flex items-center text-sm font-semibold text-primary">Explore service <ChevronRight className="ml-1 h-4 w-4" /></Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-24"><div className="container mx-auto px-4 lg:px-8"><motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-2xl mb-12"><span className="text-sm font-semibold text-primary uppercase tracking-widest">What we build</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">One team. Many kinds of websites.</h2><p className="mt-4 text-muted-foreground text-lg">Whether you are launching a business, selling online, building a community or creating a custom system, we can build around your goals.</p></motion.div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">{serviceCards.map((service) => <motion.div key={service.title} variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:-translate-y-1 transition-all"><div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center"><service.icon className="h-5 w-5 text-primary" /></div><h3 className="mt-5 text-xl font-display font-bold">{service.title}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed">{service.description}</p><Link to="/services" className="mt-4 inline-flex items-center text-sm font-semibold text-primary">Explore service <ChevronRight className="ml-1 h-4 w-4" /></Link></motion.div>)}</div></div></section>
 
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between gap-5 items-start md:items-end mb-12">
-            <div>
-              <span className="text-sm font-semibold text-primary uppercase tracking-widest">Selected work</span>
-              <h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Websites across different industries.</h2>
-              <p className="mt-3 text-muted-foreground max-w-2xl">Business, marketplace, education, e-commerce and organisation projects — real websites we have designed and developed, using the actual project work.</p>
-            </div>
-            <Button asChild variant="outline"><Link to="/portfolio">See all projects <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
-          </div>
+      <section className="py-24 bg-muted/30"><div className="container mx-auto px-4 lg:px-8"><div className="flex flex-col md:flex-row justify-between gap-5 items-start md:items-end mb-12"><div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Selected work</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Websites across different industries.</h2><p className="mt-3 text-muted-foreground max-w-2xl">Business, marketplace, education, e-commerce and organisation projects — real websites we have designed and developed for digital audiences.</p></div><Button asChild variant="outline"><Link to="/portfolio">See all projects <ArrowRight className="ml-2 h-4 w-4" /></Link></Button></div><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{portfolioProjects.slice(0, 7).map((project, index) => <motion.article key={project.id} variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="group overflow-hidden rounded-3xl bg-card border border-border hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl"><a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} live website`} className="relative block aspect-[16/10] overflow-hidden bg-muted">{project.image && <img src={project.image} alt={`${project.title} website project`} loading={index < 3 ? "eager" : "lazy"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />}<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" /><span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-sm text-xs font-semibold text-foreground shadow-sm">{project.category}</span><span className="absolute top-4 right-4 h-10 w-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-foreground shadow-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"><ExternalLink className="h-4 w-4" /></span><span className="absolute bottom-4 left-5 text-white text-xs font-semibold uppercase tracking-widest">Project {String(index + 1).padStart(2, "0")}</span></a><div className="p-6"><div className="flex items-center gap-2 text-xs text-muted-foreground"><span className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="h-3.5 w-3.5" /> Live project</span><span>•</span><span>{project.tags.slice(0, 2).join(" · ")}</span></div><h3 className="mt-2 text-xl font-display font-bold tracking-tight">{project.title}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">{project.description}</p><div className="mt-4 flex flex-wrap gap-2">{project.tags.slice(0, 3).map((tag) => <span key={tag} className="px-2.5 py-1 rounded-full text-xs bg-muted text-muted-foreground">{tag}</span>)}</div><a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">View live project <ExternalLink className="h-3.5 w-3.5" /></a></div></motion.article>)}</div></div></section>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioProjects.slice(0, 7).map((project, index) => (
-              <motion.article
-                key={project.id}
-                variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                className="group overflow-hidden rounded-3xl bg-card border border-border hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl"
-              >
-                <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} live website`} className="relative block aspect-[16/10] overflow-hidden bg-muted">
-                  {project.image && <img src={project.image} alt={`${project.title} website project`} loading={index < 3 ? "eager" : "lazy"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" />
-                  <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-sm text-xs font-semibold text-foreground shadow-sm">{project.category}</span>
-                  <span className="absolute top-4 right-4 h-10 w-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-foreground shadow-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"><ExternalLink className="h-4 w-4" /></span>
-                  <span className="absolute bottom-4 left-5 text-white text-xs font-semibold uppercase tracking-widest">Project {String(index + 1).padStart(2, "0")}</span>
-                </a>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="h-3.5 w-3.5" /> Live project</span>
-                    <span>•</span>
-                    <span>{project.tags.slice(0, 2).join(" · ")}</span>
-                  </div>
-                  <h3 className="mt-2 text-xl font-display font-bold tracking-tight">{project.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">{project.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag) => <span key={tag} className="px-2.5 py-1 rounded-full text-xs bg-muted text-muted-foreground">{tag}</span>)}
-                  </div>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">View live project <ExternalLink className="h-3.5 w-3.5" /></a>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-24"><div className="container mx-auto px-4 lg:px-8"><div className="text-center max-w-2xl mx-auto mb-12"><span className="text-sm font-semibold text-primary uppercase tracking-widest">Why work with us</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">A website should do more than look good.</h2><p className="mt-4 text-muted-foreground">We focus on clear messaging, mobile usability, speed and simple ways for customers to contact you.</p></div><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">{reasons.map((item) => <div key={item.title} className="p-6 rounded-2xl border border-border bg-card"><div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><item.icon className="h-5 w-5 text-primary" /></div><h3 className="mt-4 font-display font-bold">{item.title}</h3><p className="mt-2 text-sm text-muted-foreground">{item.description}</p></div>)}</div></div></section>
 
-      <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12"><span className="text-sm font-semibold text-primary uppercase tracking-widest">Why work with us</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">A website should do more than look good.</h2><p className="mt-4 text-muted-foreground">We focus on clear messaging, mobile usability, speed and simple ways for customers to contact you.</p></div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">{reasons.map((item) => <div key={item.title} className="p-6 rounded-2xl border border-border bg-card"><div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"><item.icon className="h-5 w-5 text-primary" /></div><h3 className="mt-4 font-display font-bold">{item.title}</h3><p className="mt-2 text-sm text-muted-foreground">{item.description}</p></div>)}</div>
-        </div>
-      </section>
+      <section className="py-24 bg-muted/30"><div className="container mx-auto px-4 lg:px-8"><div className="text-center mb-12"><span className="text-sm font-semibold text-primary uppercase tracking-widest">How it works</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">From idea to launch</h2></div><div className="grid md:grid-cols-4 gap-6">{processSteps.map(([num, title, desc]) => <div key={num} className="relative"><div className="text-4xl font-display font-extrabold text-primary/20">{num}</div><h3 className="mt-2 text-lg font-display font-bold">{title}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p></div>)}</div></div></section>
 
-      <section className="py-24 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8"><div className="text-center mb-12"><span className="text-sm font-semibold text-primary uppercase tracking-widest">How it works</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">From idea to launch</h2></div><div className="grid md:grid-cols-4 gap-6">{processSteps.map(([num, title, desc]) => <div key={num} className="relative"><div className="text-4xl font-display font-extrabold text-primary/20">{num}</div><h3 className="mt-2 text-lg font-display font-bold">{title}</h3><p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p></div>)}</div></div>
-      </section>
+      <section className="py-24"><div className="container mx-auto px-4 lg:px-8"><div className="max-w-3xl mx-auto rounded-3xl border border-primary/20 bg-primary/5 p-8 md:p-14 text-center"><span className="inline-flex items-center gap-2 text-sm font-semibold text-primary"><Building2 className="h-4 w-4" /> For businesses, organisations & individuals worldwide</span><h2 className="mt-4 text-3xl md:text-5xl font-display font-extrabold">Have an idea? Let's build it.</h2><p className="mt-4 text-muted-foreground text-lg">Tell us what you want to achieve, your budget and your timeline. We'll help you choose the right website or web application.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary text-primary-foreground"><Link to="/book-appointment">Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />WhatsApp Us</a></Button></div><p className="mt-4 text-sm text-muted-foreground">Discuss your requirements first. We will provide a tailored proposal after understanding the scope.</p></div></div></section>
 
-      <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8"><div className="max-w-3xl mx-auto rounded-3xl border border-primary/20 bg-primary/5 p-8 md:p-14 text-center"><span className="inline-flex items-center gap-2 text-sm font-semibold text-primary"><Building2 className="h-4 w-4" /> For businesses, organisations & individuals</span><h2 className="mt-4 text-3xl md:text-5xl font-display font-extrabold">Have an idea? Let's build it.</h2><p className="mt-4 text-muted-foreground text-lg">Tell us what you want to achieve, your budget and your timeline. We'll help you choose the right website or web application.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary text-primary-foreground"><Link to="/book-appointment">Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />WhatsApp Us</a></Button></div><p className="mt-4 text-sm text-muted-foreground">Discuss your requirements first. We will provide a tailored proposal after understanding the scope.</p></div></div>
-      </section>
-
-      <section className="py-20 border-t border-border">
-        <div className="container mx-auto px-4 lg:px-8"><div className="flex items-end justify-between gap-4 mb-8"><div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Knowledge bank</span><h2 className="mt-2 text-2xl md:text-3xl font-display font-extrabold">Useful website & digital guides</h2></div><Link to="/blog" className="hidden sm:flex items-center text-sm font-semibold text-primary">View all <ArrowRight className="ml-1 h-4 w-4" /></Link></div><div className="grid md:grid-cols-3 gap-5">{recentPosts.map((post) => <Link key={post.id} to={`/blog/${post.slug}`} className="p-6 rounded-2xl border border-border bg-card hover:border-primary/30 transition-colors"><span className="text-xs font-semibold text-primary uppercase">{post.category}</span><h3 className="mt-2 font-display font-bold text-lg">{post.title}</h3><p className="mt-2 text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p></Link>)}</div></div>
-      </section>
+      <section className="py-20 border-t border-border"><div className="container mx-auto px-4 lg:px-8"><div className="flex items-end justify-between gap-4 mb-8"><div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Knowledge bank</span><h2 className="mt-2 text-2xl md:text-3xl font-display font-extrabold">Useful website & digital guides</h2></div><Link to="/blog" className="hidden sm:flex items-center text-sm font-semibold text-primary">View all <ArrowRight className="ml-1 h-4 w-4" /></Link></div><div className="grid md:grid-cols-3 gap-5">{recentPosts.map((post) => <Link key={post.id} to={`/blog/${post.slug}`} className="p-6 rounded-2xl border border-border bg-card hover:border-primary/30 transition-colors"><span className="text-xs font-semibold text-primary uppercase">{post.category}</span><h3 className="mt-2 font-display font-bold text-lg">{post.title}</h3><p className="mt-2 text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p></Link>)}</div></div></section>
     </>
   );
 }
