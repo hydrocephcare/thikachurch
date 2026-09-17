@@ -4,6 +4,7 @@ import { Menu, X, MessageCircle, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { WHATSAPP_URL } from "@/lib/constants";
+import Brand from "@/components/Brand";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -30,7 +31,7 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${scrolled ? "glass-strong shadow-sm" : "bg-transparent"}`}>
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
-        <Link to="/" className="font-display text-xl font-extrabold text-foreground tracking-tight">KenyaAdverts<span className="text-primary">.co.ke</span></Link>
+        <Brand compact />
         <div className="hidden lg:flex items-center gap-0.5">
           {navLinks.map(link => <Link key={link.href} to={link.href} className={`px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${location.pathname === link.href ? "text-primary bg-primary/8" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}>{link.label}</Link>)}
         </div>
