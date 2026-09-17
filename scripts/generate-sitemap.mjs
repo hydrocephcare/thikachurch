@@ -5,15 +5,7 @@ const SITE = "https://kenyaadverts.co.ke";
 const root = process.cwd();
 
 const staticRoutes = [
-  "/",
-  "/services",
-  "/portfolio",
-  "/about",
-  "/contact",
-  "/order",
-  "/book-appointment",
-  "/blog",
-  "/knowledge-bank",
+  "/", "/services", "/portfolio", "/about", "/contact", "/order", "/book-appointment", "/blog", "/knowledge-bank",
 ];
 
 const [appSource, blogSource] = await Promise.all([
@@ -21,13 +13,21 @@ const [appSource, blogSource] = await Promise.all([
   readFile(resolve(root, "src/lib/blogData.ts"), "utf8"),
 ]);
 
-const seoBlock = appSource.match(/const seoSlugs = \[([\s\S]*?)\];/m)?.[1] ?? "";
-const seoSlugs = [...seoBlock.matchAll(/"([^"]+)"/g)].map((match) => `/${match[1]}`);
-const blogEntries = [...blogSource.matchAll(/\{[\s\S]*?slug:\s*"([^"]+)"[\s\S]*?publishedAt:\s*"([^"]+)"[\s\S]*?updatedAt:\s*"([^"]+)"[\s\S]*?\}/g)]
+function extractSlugs(source, variableName) {
+  const block = source.match(new RegExp(`const ${variableName} = \\[([\\s\\S]*?)\\];`, "m"))?.[1] ?? "";
+  return [...block.matchAll(/\"([^\"]+)\"/g)].map((match) => `/${match[1]}`);
+}
+
+const seoSlugs = extractSlugs(appSource, "seoSlugs");
+const globalSeoSlugs = extractSlugs(appSource, "globalSeoSlugs");
+const blogEntries = [...blogSource.matchAll(/\{[\s\S]*?slug:\s*\"([^\"]+)\"[\s\S]*?publishedAt:\s*\"([^\"]+)\"[\s\S]*?updatedAt:\s*\"([^\"]+)\"[\s\S]*?\}/g)]
   .map((match) => ({ path: `/blog/${match[1]}`, lastmod: match[3] || match[2] }));
 
+const today = new Date().toISOString().slice(0, 10);
 const urls = [
-  ...new Set([...staticRoutes, ...seoSlugs].map((path) => ({ path, lastmod: new Date().toISOString().slice(0, 10) }))),
+  ...staticRoutes.map((path) => ({ path, lastmod: today })),
+  ...seoSlugs.map((path) => ({ path, lastmod: today })),
+  ...globalSeoSlugs.map((path) => ({ path, lastmod: today })),
   ...blogEntries,
 ];
 
