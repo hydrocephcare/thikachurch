@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight, MessageCircle, Globe, Zap, Shield, Code2, Users,
-  TrendingUp, CheckCircle2, ChevronRight, ExternalLink, ShoppingCart,
+  CheckCircle2, ChevronRight, ExternalLink, ShoppingCart,
   Building2, GraduationCap, Church, BriefcaseBusiness, Search, Smartphone,
+  CalendarCheck, Sparkles, RotateCcw,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_URL, WHATSAPP_ORDER_URL, portfolioProjects } from "@/lib/constants";
@@ -33,6 +35,24 @@ const processSteps = [
   ["04", "Launch", "We help with deployment, domain setup and the final handover."],
 ];
 
+const plannerGoals = [
+  { id: "business", label: "Grow my business", icon: BriefcaseBusiness },
+  { id: "sell", label: "Sell products online", icon: ShoppingCart },
+  { id: "organisation", label: "Represent an organisation", icon: Church },
+  { id: "education", label: "Build an education platform", icon: GraduationCap },
+  { id: "system", label: "Build a custom system", icon: Code2 },
+  { id: "personal", label: "Build my personal brand", icon: Users },
+];
+
+const plannerFeatures = [
+  "Online payments / M-Pesa",
+  "Online booking or appointments",
+  "Customer enquiry forms",
+  "Dashboard / admin panel",
+  "Online store / product catalogue",
+  "Blog / news / resources",
+];
+
 const fadeIn = {
   hidden: { opacity: 0, y: 18 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
@@ -40,6 +60,28 @@ const fadeIn = {
 
 export default function HomePage() {
   const recentPosts = blogPosts.slice(0, 3);
+  const [plannerStep, setPlannerStep] = useState(1);
+  const [goal, setGoal] = useState("");
+  const [features, setFeatures] = useState<string[]>([]);
+
+  const recommendation = useMemo(() => {
+    if (goal === "sell") return { title: "E-Commerce Website", text: "A mobile-first online shop with products, checkout, payments and order management." };
+    if (goal === "system") return { title: "Custom Web Application", text: "A tailored platform with the workflows, dashboards and integrations your organisation needs." };
+    if (goal === "education") return { title: "Education Website / Platform", text: "A resource-rich education experience for students, parents, teachers or institutions." };
+    if (goal === "organisation") return { title: "Organisation Website", text: "A professional home for your organisation, programmes, news, resources and community." };
+    if (goal === "personal") return { title: "Personal / Portfolio Website", text: "A polished online presence that presents your work, story, services and contact details." };
+    return { title: "Business Website", text: "A professional website focused on credibility, enquiries, services and growth." };
+  }, [goal]);
+
+  const toggleFeature = (feature: string) => {
+    setFeatures((current) => current.includes(feature) ? current.filter((item) => item !== feature) : [...current, feature]);
+  };
+
+  const resetPlanner = () => {
+    setPlannerStep(1);
+    setGoal("");
+    setFeatures([]);
+  };
 
   return (
     <>
@@ -58,11 +100,11 @@ export default function HomePage() {
               We build websites that help <span className="text-gradient-primary">your business grow.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.16 }} className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              From affordable business websites and online shops to church, school and custom web applications — we design and build for real people and real businesses in Kenya.
+              From business websites and online shops to church, school and custom web applications — we design and build for real people and real businesses in Kenya.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }} className="mt-8 flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground hover:opacity-90 h-13 px-7">
-                <Link to="/order">Start Your Website <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/book-appointment">Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="h-13 px-7 bg-background/60">
                 <a href={WHATSAPP_ORDER_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />Chat on WhatsApp</a>
@@ -72,7 +114,7 @@ export default function HomePage() {
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />Mobile-first</span>
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />M-Pesa ready</span>
               <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />SEO-ready</span>
-              <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />From KES 5,000</span>
+              <span><CheckCircle2 className="inline h-4 w-4 text-primary mr-1" />Custom builds</span>
             </div>
           </div>
         </div>
@@ -81,9 +123,71 @@ export default function HomePage() {
       <section className="py-14 border-y border-border bg-card/40">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[["7+", "Projects & platforms shown"], ["6+", "Website categories"], ["KES 5K", "Starting point"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
+            {[["7+", "Projects & platforms shown"], ["6+", "Website categories"], ["Kenya", "Built for local needs"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
               <div key={label}><div className="text-2xl md:text-3xl font-display font-extrabold text-primary">{value}</div><div className="mt-1 text-sm text-muted-foreground">{label}</div></div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-muted/20" id="project-planner">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-widest"><Sparkles className="h-4 w-4" /> Interactive project planner</span>
+            <h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Not sure what you need?</h2>
+            <p className="mt-4 text-muted-foreground text-lg">Answer a few quick questions and we will point you toward a suitable starting direction. No price calculator — just a smarter way to start the conversation.</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto rounded-3xl border border-border bg-card shadow-xl overflow-hidden">
+            <div className="h-1.5 bg-muted"><div className="h-full bg-gradient-primary transition-all duration-500" style={{ width: `${plannerStep * 33.33}%` }} /></div>
+            <div className="p-6 md:p-10">
+              {plannerStep === 1 && (
+                <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
+                  <p className="text-sm font-semibold text-primary">STEP 1 OF 3</p>
+                  <h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">What are you trying to achieve?</h3>
+                  <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {plannerGoals.map((item) => {
+                      const Icon = item.icon;
+                      const selected = goal === item.id;
+                      return <button key={item.id} type="button" onClick={() => setGoal(item.id)} className={`text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10 shadow-sm" : "border-border hover:border-primary/40 hover:bg-muted/40"}`}><Icon className={`h-5 w-5 ${selected ? "text-primary" : "text-muted-foreground"}`} /><span className="mt-3 block font-semibold">{item.label}</span></button>;
+                    })}
+                  </div>
+                  <div className="mt-7 flex justify-end"><Button disabled={!goal} onClick={() => setPlannerStep(2)}>Continue <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+                </motion.div>
+              )}
+
+              {plannerStep === 2 && (
+                <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
+                  <p className="text-sm font-semibold text-primary">STEP 2 OF 3</p>
+                  <h3 className="mt-2 text-2xl md:text-3xl font-display font-bold">Which features might you need?</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">Select as many as you like. We will confirm the right setup during consultation.</p>
+                  <div className="mt-7 grid sm:grid-cols-2 gap-3">
+                    {plannerFeatures.map((feature) => {
+                      const selected = features.includes(feature);
+                      return <button key={feature} type="button" onClick={() => toggleFeature(feature)} className={`flex items-center gap-3 text-left p-4 rounded-2xl border transition-all ${selected ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"}`}><span className={`w-6 h-6 rounded-md border flex items-center justify-center ${selected ? "bg-primary border-primary text-primary-foreground" : "border-border"}`}>{selected && <CheckCircle2 className="h-4 w-4" />}</span><span className="font-medium">{feature}</span></button>;
+                    })}
+                  </div>
+                  <div className="mt-7 flex justify-between"><Button variant="ghost" onClick={() => setPlannerStep(1)}>Back</Button><Button onClick={() => setPlannerStep(3)}>See my direction <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+                </motion.div>
+              )}
+
+              {plannerStep === 3 && (
+                <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}>
+                  <div className="text-center">
+                    <div className="mx-auto w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"><Sparkles className="h-7 w-7 text-primary" /></div>
+                    <p className="mt-5 text-sm font-semibold text-primary uppercase tracking-widest">Your project direction</p>
+                    <h3 className="mt-2 text-3xl md:text-4xl font-display font-extrabold">{recommendation.title}</h3>
+                    <p className="mt-4 max-w-2xl mx-auto text-muted-foreground leading-relaxed">{recommendation.text}</p>
+                  </div>
+                  <div className="mt-7 rounded-2xl bg-muted/50 border border-border p-5">
+                    <p className="text-sm font-semibold">Features you selected</p>
+                    <div className="mt-3 flex flex-wrap gap-2">{features.length ? features.map((feature) => <span key={feature} className="px-3 py-1.5 rounded-full bg-background border border-border text-sm">{feature}</span>) : <span className="text-sm text-muted-foreground">No specific features selected yet.</span>}</div>
+                  </div>
+                  <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary"><Link to={`/book-appointment?project=${encodeURIComponent(recommendation.title)}`}>Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />Discuss on WhatsApp</a></Button><Button variant="ghost" onClick={resetPlanner}><RotateCcw className="mr-2 h-4 w-4" />Start over</Button></div>
+                  <p className="mt-5 text-center text-xs text-muted-foreground">This is a project-direction tool, not an automatic quote. We discuss scope and requirements before providing a proposal.</p>
+                </motion.div>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -137,7 +241,7 @@ export default function HomePage() {
       </section>
 
       <section className="py-24">
-        <div className="container mx-auto px-4 lg:px-8"><div className="max-w-3xl mx-auto rounded-3xl border border-primary/20 bg-primary/5 p-8 md:p-14 text-center"><span className="inline-flex items-center gap-2 text-sm font-semibold text-primary"><Building2 className="h-4 w-4" /> For businesses, organisations & individuals</span><h2 className="mt-4 text-3xl md:text-5xl font-display font-extrabold">Have an idea? Let's build it.</h2><p className="mt-4 text-muted-foreground text-lg">Tell us what you want to achieve, your budget and your timeline. We'll help you choose the right website or web application.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary text-primary-foreground"><Link to="/order">Request a Website <ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />WhatsApp Us</a></Button></div><p className="mt-4 text-sm text-muted-foreground">Starting from KES 5,000 · Free initial consultation</p></div></div>
+        <div className="container mx-auto px-4 lg:px-8"><div className="max-w-3xl mx-auto rounded-3xl border border-primary/20 bg-primary/5 p-8 md:p-14 text-center"><span className="inline-flex items-center gap-2 text-sm font-semibold text-primary"><Building2 className="h-4 w-4" /> For businesses, organisations & individuals</span><h2 className="mt-4 text-3xl md:text-5xl font-display font-extrabold">Have an idea? Let's build it.</h2><p className="mt-4 text-muted-foreground text-lg">Tell us what you want to achieve, your budget and your timeline. We'll help you choose the right website or web application.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary text-primary-foreground"><Link to="/book-appointment">Book a Consultation <CalendarCheck className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-4 w-4" />WhatsApp Us</a></Button></div><p className="mt-4 text-sm text-muted-foreground">Discuss your requirements first. We will provide a tailored proposal after understanding the scope.</p></div></div>
       </section>
 
       <section className="py-20 border-t border-border">
