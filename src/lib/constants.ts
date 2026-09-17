@@ -11,6 +11,10 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 export const WHATSAPP_ORDER_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'd like to order a website. Here are my details:")}`;
 export const PHONE_DISPLAY = "+254 115 475 543";
 
+// Single Google account with full KenyaAdverts administrator access.
+// There is no separate admin password; successful Google authentication for this account is the login.
+export const ADMIN_EMAIL = "hydrocephcare@gmail.com";
+
 export type ProjectStatus = "completed" | "coming-soon";
 
 export interface PortfolioProject {
