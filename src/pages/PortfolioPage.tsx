@@ -1,134 +1,56 @@
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import { ExternalLink, ArrowRight, CheckCircle2, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { portfolioProjects, upcomingProjects } from "@/lib/constants";
-import type { PortfolioProject } from "@/lib/constants";
+import { portfolioProjects } from "@/lib/constants";
+import { useMemo, useState } from "react";
+
+const filters = ["All", "Business", "Marketplace", "Education", "Organisation", "E-Commerce", "Web Development"];
 
 const fadeIn = {
   hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-function StatusBadge({ status }: { status: PortfolioProject["status"] }) {
-  if (status === "completed") {
-    return (
-      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
-        <CheckCircle2 className="h-3 w-3" /> Completed
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary/10 text-secondary border border-secondary/20">
-      <Clock className="h-3 w-3" /> Coming Soon
-    </span>
-  );
-}
-
 export default function PortfolioPage() {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const visibleProjects = useMemo(() => activeFilter === "All" ? portfolioProjects : portfolioProjects.filter((project) => project.category.includes(activeFilter) || project.tags.some((tag) => tag.includes(activeFilter))), [activeFilter]);
+
   return (
     <>
-      <section className="pt-28 pb-16">
+      <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-sm font-medium text-primary uppercase tracking-widest">Portfolio</span>
-            <h1 className="mt-3 text-4xl md:text-6xl font-display font-extrabold text-foreground">
-              Our <span className="text-gradient-primary">Work</span>
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-              Every project is a partnership. Here are real websites and platforms we've delivered for clients — specializing in church and community websites.
-            </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
+            <span className="text-sm font-semibold text-primary uppercase tracking-widest">Portfolio</span>
+            <h1 className="mt-4 text-4xl md:text-6xl font-display font-extrabold">Websites, platforms & <span className="text-gradient-primary">digital products.</span></h1>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">We build for more than one industry. Explore our work across business, education, marketplaces, organisations, e-commerce and custom digital projects.</p>
           </motion.div>
         </div>
       </section>
 
-      {/* Completed Projects */}
       <section className="pb-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="space-y-12">
-            {portfolioProjects.map((project, i) => (
-              <motion.div
-                key={project.id}
-                variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid md:grid-cols-2 gap-6 items-center"
-              >
-                <div className={`${i % 2 === 1 ? "md:order-2" : ""}`}>
-                  <div className="aspect-video rounded-xl overflow-hidden bg-muted border border-border">
-                    {project.image ? (
-                      <img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="font-display text-2xl font-bold text-muted-foreground">{project.title}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className={`${i % 2 === 1 ? "md:order-1" : ""}`}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-medium text-primary uppercase tracking-wider">{project.category}</span>
-                    <StatusBadge status={project.status} />
-                  </div>
-                  <h2 className="mt-2 text-2xl md:text-3xl font-display font-bold text-foreground">{project.title}</h2>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{project.description}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <Button asChild className="mt-5 bg-gradient-primary text-primary-foreground hover:opacity-90">
-                    <a href={project.url} target="_blank" rel="noopener noreferrer">
-                      Visit Live Site <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
+          <div className="flex flex-wrap gap-2 mb-10 items-center">
+            <Filter className="h-4 w-4 text-muted-foreground mr-1" />
+            {filters.map((filter) => <button key={filter} onClick={() => setActiveFilter(filter)} className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${activeFilter === filter ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border text-muted-foreground hover:text-foreground hover:border-primary/30"}`}>{filter}</button>)}
           </div>
+
+          {visibleProjects.length > 0 ? <div className="grid md:grid-cols-2 gap-7">
+            {visibleProjects.map((project, i) => <motion.article key={project.id} variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/30 hover:-translate-y-1 transition-all">
+              <div className="aspect-[16/9] overflow-hidden bg-muted">{project.image && <img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />}</div>
+              <div className="p-6">
+                <div className="flex items-center gap-2"><span className="text-xs font-semibold text-primary uppercase tracking-wider">{project.category}</span><span className="inline-flex items-center gap-1 text-xs text-muted-foreground"><CheckCircle2 className="h-3 w-3" /> Live</span></div>
+                <h2 className="mt-2 text-2xl font-display font-bold">{project.title}</h2>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="px-2.5 py-1 rounded-full text-xs bg-muted text-muted-foreground">{tag}</span>)}</div>
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center text-sm font-semibold text-primary">View live project <ExternalLink className="ml-1.5 h-3.5 w-3.5" /></a>
+              </div>
+            </motion.article>)}
+          </div> : <div className="py-20 text-center text-muted-foreground">No projects in this category yet. <button onClick={() => setActiveFilter("All")} className="text-primary font-semibold">View all projects</button></div>}
         </div>
       </section>
 
-      {/* Coming Soon Projects */}
-      <section className="py-20 bg-muted/40">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-display font-extrabold text-foreground">More Projects Coming Soon</h2>
-            <p className="mt-3 text-muted-foreground">We're always working on new and exciting projects for our clients.</p>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto">
-            {upcomingProjects.map((p) => (
-              <motion.div
-                key={p.id}
-                variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="p-5 rounded-xl bg-background border border-dashed border-border text-center"
-              >
-                <StatusBadge status={p.status} />
-                <h3 className="mt-3 font-display font-bold text-foreground">{p.title}</h3>
-                <p className="mt-1 text-xs text-muted-foreground">{p.category}</p>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-4xl font-display font-extrabold text-foreground">Want Your Project Here?</h2>
-          <p className="mt-3 text-muted-foreground max-w-md mx-auto">Let's build something amazing together.</p>
-          <Button asChild size="lg" className="mt-6 bg-gradient-primary text-primary-foreground hover:opacity-90 h-12 px-7">
-            <Link to="/order">Start Your Project <ArrowRight className="ml-2 h-4 w-4" /></Link>
-          </Button>
-        </div>
-      </section>
+      <section className="py-24 bg-muted/30"><div className="container mx-auto px-4 lg:px-8"><div className="max-w-3xl mx-auto text-center"><span className="text-sm font-semibold text-primary uppercase tracking-widest">Your next project</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">We can build something for your industry too.</h2><p className="mt-4 text-muted-foreground text-lg">Business, school, shop, organisation, personal brand or a completely custom system — tell us what you need.</p><Button asChild size="lg" className="mt-8 bg-gradient-primary"><Link to="/order">Start a Project <ArrowRight className="ml-2 h-4 w-4" /></Link></Button></div></div></section>
     </>
   );
 }
