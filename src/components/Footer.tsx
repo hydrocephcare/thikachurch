@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MessageCircle, Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin, ArrowUpRight, CalendarDays } from "lucide-react";
 import { WHATSAPP_URL, PHONE_DISPLAY } from "@/lib/constants";
 
 const footerLinks = {
@@ -7,7 +7,7 @@ const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Services", href: "/services" },
-    { label: "Pricing", href: "/pricing" },
+    { label: "Book a Consultation", href: "/book-appointment" },
     { label: "Contact", href: "/contact" },
   ],
   Services: [
@@ -40,6 +40,7 @@ export default function Footer() {
               <span className="flex items-center gap-2 text-sm text-muted-foreground"><Mail className="h-4 w-4" />hello@kenyaadverts.co.ke</span>
               <span className="flex items-center gap-2 text-sm text-muted-foreground"><MapPin className="h-4 w-4" />Kenya · Serving clients nationwide</span>
             </div>
+            <ButtonLikeBooking />
           </div>
           {Object.entries(footerLinks).map(([title, links]) => <div key={title}><h3 className="font-display font-bold text-foreground mb-4 text-base">{title}</h3><div className="flex flex-col gap-2.5">{links.map(link => <Link key={link.label} to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group">{link.label}<ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" /></Link>)}</div></div>)}
         </div>
@@ -47,4 +48,8 @@ export default function Footer() {
       </div>
     </footer>
   );
+}
+
+function ButtonLikeBooking() {
+  return <Link to="/book-appointment" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-opacity"><CalendarDays className="h-4 w-4" />Book a consultation</Link>;
 }
