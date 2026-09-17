@@ -8,16 +8,17 @@ interface SeoProps {
   path: string;
   type?: "website" | "article";
   image?: string;
+  noindex?: boolean;
 }
 
-export default function Seo({ title, description, path, type = "website", image = "/og-image.jpg" }: SeoProps) {
+export default function Seo({ title, description, path, type = "website", image = "/og-image.jpg", noindex = false }: SeoProps) {
   const canonical = `${SITE}${path}`;
   const imageUrl = image.startsWith("http") ? image : `${SITE}${image}`;
-
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
       <link rel="canonical" href={canonical} />
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
