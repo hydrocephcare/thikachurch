@@ -3,8 +3,10 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+// Vercel keeps the normal root path. GitHub Pages uses a repository subpath
+// only when the Pages preview workflow builds the project.
 export default defineConfig(({ mode }) => ({
+  base: process.env.GITHUB_ACTIONS === "true" ? "/thikachurch/" : "/",
   server: {
     host: "::",
     port: 8080,
