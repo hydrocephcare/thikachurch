@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import RouteSeo from "@/components/RouteSeo";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -16,6 +17,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <ScrollToTop />
+      <RouteSeo />
       <Navbar />
       <main className="flex-1">
         <Outlet />
