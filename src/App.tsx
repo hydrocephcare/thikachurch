@@ -13,6 +13,7 @@ import BlogPage from "@/pages/BlogPage";
 import BlogPostPage from "@/pages/BlogPostPage";
 import OrderPage from "@/pages/OrderPage";
 import BookAppointmentPage from "@/pages/BookAppointmentPage";
+import AdminAppointmentsPage from "@/pages/AdminAppointmentsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "./pages/NotFound";
@@ -39,6 +40,7 @@ const App = () => (
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Route>
+            <Route path="/admin/appointments" element={<AdminAppointmentsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
