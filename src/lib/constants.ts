@@ -28,11 +28,14 @@ export interface PortfolioProject {
   status: ProjectStatus;
 }
 
+// Keep this list focused on real projects already represented by repository assets.
+// The order intentionally leads with commercial/client-facing work before education
+// and organisation projects so the portfolio communicates broader web-development experience.
 export const portfolioProjects: PortfolioProject[] = [
   {
     id: "kenyaadverts-com",
     title: "Kenya Adverts Marketplace",
-    category: "Marketplace",
+    category: "Marketplace & E-Commerce",
     description: "A classifieds marketplace for buying and selling products and services online, with listings, search and mobile-first browsing.",
     url: "https://www.kenyaadverts.com",
     tags: ["Marketplace", "Classifieds", "M-Pesa", "E-Commerce"],
@@ -40,43 +43,23 @@ export const portfolioProjects: PortfolioProject[] = [
     status: "completed",
   },
   {
-    id: "ompath-study",
-    title: "Ompath Study",
-    category: "Education",
-    description: "A medical education platform for MBChB students with study notes, MCQs, flashcards, past papers and clinical learning resources.",
-    url: "https://ompathstudy.com",
-    tags: ["Education", "Medical", "MCQ Bank", "Learning Platform"],
-    image: portfolioOmpath,
-    status: "completed",
-  },
-  {
     id: "kenyaadverts-coke",
-    title: "KenyaAdverts.co.ke",
-    category: "Web Development",
-    description: "The KenyaAdverts web studio website, showcasing website design and development services for businesses, organisations and individuals.",
+    title: "KenyaAdverts Web Studio",
+    category: "Business & Agency",
+    description: "The KenyaAdverts web studio website, presenting website design and development services for businesses, organisations and individuals.",
     url: "https://www.kenyaadverts.co.ke",
-    tags: ["Agency", "Business", "Web Design", "SEO"],
+    tags: ["Business", "Agency", "Web Design", "SEO"],
     image: portfolioKenyaAdvertsCoke,
     status: "completed",
   },
   {
-    id: "mku-cu",
-    title: "MKU Christian Union",
-    category: "Organisation",
-    description: "A community website with events, ministry information, sermon resources, live-stream links and WhatsApp engagement.",
-    url: "https://mku-cu-connect.vercel.app/",
-    tags: ["Organisation", "Community", "Events", "Live Streaming"],
-    image: portfolioMkucu,
-    status: "completed",
-  },
-  {
-    id: "medlife-echos",
-    title: "Medlife Echo's",
-    category: "Education & Blog",
-    description: "A medical education publication with a large library of articles covering medical school subjects and exam preparation.",
-    url: "https://medlifeechos.vercel.app/",
-    tags: ["Blog", "Medical", "Education", "SEO"],
-    image: portfolioMedlife,
+    id: "ompath-study",
+    title: "Ompath Study",
+    category: "Education & Learning Platform",
+    description: "A medical education platform for MBChB students with study notes, MCQs, flashcards, past papers and clinical learning resources.",
+    url: "https://ompathstudy.com",
+    tags: ["Education", "Medical", "MCQ Bank", "Learning Platform"],
+    image: portfolioOmpath,
     status: "completed",
   },
   {
@@ -92,11 +75,31 @@ export const portfolioProjects: PortfolioProject[] = [
   {
     id: "kcse-azani",
     title: "KCSE Resource Hub",
-    category: "Education",
+    category: "Education & Resources",
     description: "A dedicated educational resource platform providing KCSE study materials, guides and project support resources.",
     url: "https://kcse.azaniispproject.co.ke/",
     tags: ["Education", "KCSE", "Resources"],
     image: portfolioKcse,
+    status: "completed",
+  },
+  {
+    id: "mku-cu",
+    title: "MKU Christian Union",
+    category: "Organisation & Community",
+    description: "A community website with events, ministry information, sermon resources, live-stream links and WhatsApp engagement.",
+    url: "https://mku-cu-connect.vercel.app/",
+    tags: ["Organisation", "Community", "Events", "Live Streaming"],
+    image: portfolioMkucu,
+    status: "completed",
+  },
+  {
+    id: "medlife-echos",
+    title: "Medlife Echo's",
+    category: "Education & Publishing",
+    description: "A medical education publication with a large library of articles covering medical school subjects and exam preparation.",
+    url: "https://medlifeechos.vercel.app/",
+    tags: ["Blog", "Medical", "Education", "SEO"],
+    image: portfolioMedlife,
     status: "completed",
   },
 ];
