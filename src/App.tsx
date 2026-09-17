@@ -18,22 +18,17 @@ import AdminAppointmentsPage from "@/pages/AdminAppointmentsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import SeoLandingPage from "@/pages/SeoLandingPage";
+import GlobalSeoLandingPage from "@/pages/GlobalSeoLandingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const seoSlugs = [
-  "business-website-design-kenya",
-  "ecommerce-website-design-kenya",
-  "online-store-development-kenya",
-  "blog-website-design-kenya",
-  "news-website-development-kenya",
-  "video-streaming-website-kenya",
-  "youtube-like-website-development",
-  "netflix-like-streaming-platform",
-  "marketplace-website-development-kenya",
-  "school-website-design-kenya",
-  "custom-web-application-development-kenya",
+  "business-website-design-kenya", "ecommerce-website-design-kenya", "online-store-development-kenya", "blog-website-design-kenya", "news-website-development-kenya", "video-streaming-website-kenya", "youtube-like-website-development", "netflix-like-streaming-platform", "marketplace-website-development-kenya", "school-website-design-kenya", "custom-web-application-development-kenya",
+];
+
+const globalSeoSlugs = [
+  "website-design-worldwide", "affordable-website-design", "business-website-design-worldwide", "ecommerce-website-development-worldwide", "custom-web-application-development", "python-web-development", "react-web-development", "wordpress-alternative-custom-websites", "seo-website-development", "website-maintenance-support-worldwide", "website-redesign-worldwide", "landing-page-design-worldwide", "portfolio-website-design-worldwide", "school-website-development-worldwide", "marketplace-development-worldwide", "blog-website-development-worldwide", "web-design-for-startups",
 ];
 
 const App = () => (
@@ -56,6 +51,7 @@ const App = () => (
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               {seoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<SeoLandingPage />} />)}
+              {globalSeoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<GlobalSeoLandingPage />} />)}
             </Route>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/appointments" element={<AdminAppointmentsPage />} />
