@@ -17,19 +17,16 @@ export type Database = {
           created_at: string
           email: string
           role: string
-          user_id: string
         }
         Insert: {
           created_at?: string
           email: string
           role?: string
-          user_id: string
         }
         Update: {
           created_at?: string
           email?: string
           role?: string
-          user_id?: string
         }
         Relationships: []
       }
@@ -257,13 +254,9 @@ export type Enums<
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never) = never,
-> = DefaultSchemaEnumNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
-}
+> = DefaultSchemaEnumNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
   ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
-    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
-    : never
+  : DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
@@ -274,13 +267,9 @@ export type CompositeTypes<
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never) = never,
-> = PublicCompositeTypeNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals
-}
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof DatabaseWithoutInternals }
   ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
-    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-    : never
+  : DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
 
 export const Constants = {
   public: {
