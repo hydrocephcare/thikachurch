@@ -215,14 +215,44 @@ export default function HomePage() {
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between gap-5 items-start md:items-end mb-12">
-            <div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Selected work</span><h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Different industries. Real projects.</h2><p className="mt-3 text-muted-foreground max-w-xl">Our work spans education, marketplaces, organisations, business websites and custom digital platforms.</p></div>
-            <Button asChild variant="outline"><Link to="/portfolio">See full portfolio <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
+            <div>
+              <span className="text-sm font-semibold text-primary uppercase tracking-widest">Selected work</span>
+              <h2 className="mt-3 text-3xl md:text-5xl font-display font-extrabold">Websites across different industries.</h2>
+              <p className="mt-3 text-muted-foreground max-w-2xl">Business, marketplace, education, e-commerce and organisation projects — real websites we have designed and developed, using the actual project work.</p>
+            </div>
+            <Button asChild variant="outline"><Link to="/portfolio">See all projects <ArrowRight className="ml-2 h-4 w-4" /></Link></Button>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioProjects.slice(0, 6).map((project) => (
-              <motion.article key={project.id} variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="overflow-hidden rounded-2xl bg-card border border-border group">
-                <div className="h-48 bg-muted overflow-hidden">{project.image && <img src={project.image} alt={project.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />}</div>
-                <div className="p-5"><span className="text-xs font-semibold uppercase tracking-wider text-primary">{project.category}</span><h3 className="mt-2 text-lg font-display font-bold">{project.title}</h3><p className="mt-2 text-sm text-muted-foreground line-clamp-2">{project.description}</p><a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">View project <ExternalLink className="h-3 w-3" /></a></div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioProjects.slice(0, 7).map((project, index) => (
+              <motion.article
+                key={project.id}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="group overflow-hidden rounded-3xl bg-card border border-border hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl"
+              >
+                <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} live website`} className="relative block aspect-[16/10] overflow-hidden bg-muted">
+                  {project.image && <img src={project.image} alt={`${project.title} website project`} loading={index < 3 ? "eager" : "lazy"} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" />
+                  <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-sm text-xs font-semibold text-foreground shadow-sm">{project.category}</span>
+                  <span className="absolute top-4 right-4 h-10 w-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center text-foreground shadow-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"><ExternalLink className="h-4 w-4" /></span>
+                  <span className="absolute bottom-4 left-5 text-white text-xs font-semibold uppercase tracking-widest">Project {String(index + 1).padStart(2, "0")}</span>
+                </a>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400"><CheckCircle2 className="h-3.5 w-3.5" /> Live project</span>
+                    <span>•</span>
+                    <span>{project.tags.slice(0, 2).join(" · ")}</span>
+                  </div>
+                  <h3 className="mt-2 text-xl font-display font-bold tracking-tight">{project.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">{project.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.slice(0, 3).map((tag) => <span key={tag} className="px-2.5 py-1 rounded-full text-xs bg-muted text-muted-foreground">{tag}</span>)}
+                  </div>
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">View live project <ExternalLink className="h-3.5 w-3.5" /></a>
+                </div>
               </motion.article>
             ))}
           </div>
