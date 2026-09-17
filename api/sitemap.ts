@@ -1,4 +1,3 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { blogPosts } from "../src/lib/blogData";
 
 const SITE = "https://kenyaadverts.co.ke";
@@ -26,7 +25,7 @@ const staticRoutes = [
   "/custom-web-application-development-kenya",
 ];
 
-export default function handler(_req: VercelRequest, res: VercelResponse) {
+export default function handler(_req: any, res: any) {
   const urls = [
     ...staticRoutes.map((path) => ({ path, lastmod: new Date().toISOString().slice(0, 10) })),
     ...blogPosts.map((post) => ({ path: `/blog/${post.slug}`, lastmod: post.updatedAt || post.publishedAt })),
