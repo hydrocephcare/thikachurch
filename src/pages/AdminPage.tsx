@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { firebaseAuth, googleProvider } from "@/integrations/firebase/client";
 import { supabase } from "@/integrations/supabase/client";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { ADMIN_EMAIL, WHATSAPP_NUMBER } from "@/lib/constants";
 
 type Tab = "appointments" | "orders" | "contacts";
 type Row = Record<string, any>;
@@ -46,6 +46,12 @@ export default function AdminPage() {
       (supabase as any).from("order_requests").select("*").order("created_at", { ascending: false }),
       (supabase as any).from("contact_submissions").select("*").order("created_at", { ascending: false }),
     ]);
+
+    const firstError = appointmentsResult.error || ordersResult.error || contactsResult.error;
+    if (firstError) {
+      setLoginError(`Admin data could not be loaded: ${firstError.message}`);
+    }
+
     setAppointments(appointmentsResult.data || []);
     setOrders(ordersResult.data || []);
     setContacts(contactsResult.data || []);
@@ -58,6 +64,7 @@ export default function AdminPage() {
       setUser(firebaseUser);
       setLoginError("");
       setIsAdmin(false);
+
       if (!firebaseUser) {
         setAppointments([]);
         setOrders([]);
@@ -67,26 +74,16 @@ export default function AdminPage() {
       }
 
       const email = firebaseUser.email?.trim().toLowerCase();
-      if (!email) {
-        setChecking(false);
-        return;
-      }
-
-      const { data: admin, error } = await (supabase as any)
-        .from("admin_users")
-        .select("email")
-        .eq("email", email)
-        .maybeSingle();
-
-      if (error) {
-        setLoginError("Admin authorization could not be checked. Make sure Firebase is connected to Supabase and the Firebase role claim is configured.");
-      }
-
-      const allowed = Boolean(admin);
+      const allowed = Boolean(firebaseUser.emailVerified && email === ADMIN_EMAIL);
       setIsAdmin(allowed);
-      if (allowed) await loadAll();
+
+      if (allowed) {
+        await loadAll();
+      }
+
       setChecking(false);
     });
+
     return () => unsubscribe();
   }, []);
 
@@ -113,7 +110,11 @@ export default function AdminPage() {
 
   const updateStatus = async (table: string, id: string, status: string) => {
     const { error } = await (supabase as any).from(table).update({ status }).eq("id", id);
-    if (error) return;
+    if (error) {
+      setLoginError(`Could not update status: ${error.message}`);
+      return;
+    }
+
     if (table === "appointment_requests") setAppointments(rows => rows.map(row => row.id === id ? { ...row, status } : row));
     if (table === "order_requests") setOrders(rows => rows.map(row => row.id === id ? { ...row, status } : row));
     if (table === "contact_submissions") setContacts(rows => rows.map(row => row.id === id ? { ...row, status } : row));
@@ -135,9 +136,9 @@ export default function AdminPage() {
 
   if (checking) return <div className="min-h-screen flex items-center justify-center"><RefreshCw className="h-6 w-6 animate-spin text-primary" /></div>;
 
-  if (!user) return <section className="min-h-screen pt-32 pb-24 bg-muted/20"><div className="container mx-auto px-4 max-w-md"><div className="rounded-3xl border border-border bg-card p-7 shadow-xl"><div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center"><LogIn className="h-6 w-6 text-primary" /></div><h1 className="mt-6 text-3xl font-display font-extrabold">Admin dashboard</h1><p className="mt-2 text-sm text-muted-foreground">Sign in securely with the Google account authorized for KenyaAdverts.</p><Button disabled={loading} type="button" onClick={signIn} className="w-full h-11 mt-7">{loading ? "Opening Google..." : "Continue with Google"}</Button>{loginError && <p className="mt-4 text-sm text-destructive">{loginError}</p>}</div></div></section>;
+  if (!user) return <section className="min-h-screen pt-32 pb-24 bg-muted/20"><div className="container mx-auto px-4 max-w-md"><div className="rounded-3xl border border-border bg-card p-7 shadow-xl"><div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center"><LogIn className="h-6 w-6 text-primary" /></div><h1 className="mt-6 text-3xl font-display font-extrabold">Admin dashboard</h1><p className="mt-2 text-sm text-muted-foreground">Sign in with the authorized Google account. No separate admin password is required.</p><Button disabled={loading} type="button" onClick={signIn} className="w-full h-11 mt-7">{loading ? "Opening Google..." : "Continue with Google"}</Button>{loginError && <p className="mt-4 text-sm text-destructive">{loginError}</p>}</div></div></section>;
 
-  if (!isAdmin) return <section className="min-h-screen pt-32 pb-24 bg-muted/20"><div className="container mx-auto px-4 max-w-xl"><div className="rounded-3xl border border-destructive/20 bg-card p-8 text-center"><X className="mx-auto h-12 w-12 text-destructive" /><h1 className="mt-5 text-2xl font-display font-bold">Admin access denied</h1><p className="mt-3 text-muted-foreground">{user.email || "This Google account"} is signed in, but it has not been authorized as a KenyaAdverts administrator.</p>{loginError && <p className="mt-4 text-sm text-destructive">{loginError}</p>}<Button variant="outline" onClick={handleSignOut} className="mt-6">Sign out</Button></div></div></section>;
+  if (!isAdmin) return <section className="min-h-screen pt-32 pb-24 bg-muted/20"><div className="container mx-auto px-4 max-w-xl"><div className="rounded-3xl border border-destructive/20 bg-card p-8 text-center"><X className="mx-auto h-12 w-12 text-destructive" /><h1 className="mt-5 text-2xl font-display font-bold">Admin access denied</h1><p className="mt-3 text-muted-foreground">Only the authorized KenyaAdverts Google account can access this dashboard.</p><Button variant="outline" onClick={handleSignOut} className="mt-6">Sign out</Button></div></div></section>;
 
   const renderAppointment = (row: Row) => <article key={row.id} className="rounded-2xl border border-border bg-card p-5 shadow-sm"><div className="flex flex-col lg:flex-row lg:justify-between gap-5"><div className="min-w-0"><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-display font-bold">{row.name}</h2><Badge variant={statusVariant(row.status)}>{row.status}</Badge></div><p className="mt-1 text-sm text-muted-foreground">{row.business || "Independent project"} · {row.project_type}</p><div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm"><span className="flex items-center gap-2"><CalendarDays className="h-4 w-4 text-primary" />{row.preferred_date}</span><span className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-primary" />{row.preferred_time} EAT</span><a className="flex items-center gap-2 hover:text-primary" href={`mailto:${row.email}`}><Mail className="h-4 w-4 text-primary" />{row.email}</a><a className="flex items-center gap-2 hover:text-primary" target="_blank" rel="noopener noreferrer" href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi ${row.name}, this is KenyaAdverts regarding your website consultation request for ${row.preferred_date} at ${row.preferred_time} EAT.`)}`}><MessageCircle className="h-4 w-4 text-primary" />{row.phone}</a></div>{row.message && <p className="mt-4 p-4 rounded-xl bg-muted/50 text-sm text-muted-foreground whitespace-pre-wrap">{row.message}</p>}</div><div className="flex flex-wrap gap-2 lg:max-w-xs lg:justify-end">{row.status === "pending" && <><Button size="sm" onClick={() => updateStatus("appointment_requests", row.id, "confirmed")}><Check className="h-4 w-4" />Confirm</Button><Button size="sm" variant="destructive" onClick={() => updateStatus("appointment_requests", row.id, "declined")}><X className="h-4 w-4" />Decline</Button></>}{row.status === "confirmed" && <><Button size="sm" variant="secondary" onClick={() => updateStatus("appointment_requests", row.id, "completed")}>Complete</Button><Button size="sm" variant="outline" onClick={() => updateStatus("appointment_requests", row.id, "cancelled")}>Cancel</Button></>}</div></div></article>;
 
@@ -145,5 +146,5 @@ export default function AdminPage() {
 
   const renderContact = (row: Row) => <article key={row.id} className="rounded-2xl border border-border bg-card p-5 shadow-sm"><div className="flex flex-col lg:flex-row lg:justify-between gap-5"><div><div className="flex flex-wrap items-center gap-2"><h2 className="text-xl font-display font-bold">{row.name}</h2><Badge variant={statusVariant(row.status)}>{row.status}</Badge></div><p className="mt-1 text-sm text-muted-foreground">{row.subject || "Website enquiry"}</p><div className="mt-4 flex flex-wrap gap-4 text-sm"><a className="hover:text-primary" href={`mailto:${row.email}`}>{row.email || "No email"}</a><span>{new Date(row.created_at).toLocaleString()}</span></div>{row.message && <p className="mt-4 p-4 rounded-xl bg-muted/50 text-sm text-muted-foreground whitespace-pre-wrap">{row.message}</p>}</div><div className="flex flex-wrap gap-2 lg:max-w-xs lg:justify-end">{contactStatuses.filter(status => status !== row.status).map(status => <Button key={status} size="sm" variant={status === "closed" ? "destructive" : "outline"} onClick={() => updateStatus("contact_submissions", row.id, status)}>{status}</Button>)}</div></div></article>;
 
-  return <section className="min-h-screen pt-28 pb-20 bg-muted/20"><div className="container mx-auto px-4 lg:px-8 max-w-7xl"><div className="flex flex-col md:flex-row md:items-end justify-between gap-5"><div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Private admin</span><h1 className="mt-2 text-3xl md:text-5xl font-display font-extrabold">KenyaAdverts dashboard</h1><p className="mt-2 text-muted-foreground">Signed in as {user.email}. Manage consultation requests, project enquiries and contact messages.</p></div><div className="flex gap-2"><Button variant="outline" onClick={loadAll} disabled={loading}><RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />Refresh</Button><Button variant="ghost" onClick={handleSignOut}><LogOut className="h-4 w-4" />Sign out</Button></div></div><div className="mt-8 grid md:grid-cols-3 gap-3">{(Object.keys(tabLabels) as Tab[]).map(key => <button key={key} type="button" onClick={() => { setTab(key); setSearch(""); }} className={`rounded-2xl border p-5 text-left transition-all ${tab === key ? "border-primary bg-primary/10" : "border-border bg-card hover:border-primary/30"}`}><div className="flex items-center justify-between gap-3"><div className="font-display font-bold">{tabLabels[key]}</div><span className="text-2xl font-display font-extrabold">{key === "appointments" ? appointments.length : key === "orders" ? orders.length : contacts.length}</span></div><div className="mt-2 text-xs text-muted-foreground">{counts[key]} awaiting attention</div></button>)}</div><div className="mt-6 relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" /><Input value={search} onChange={e => setSearch(e.target.value)} placeholder={`Search ${tabLabels[tab].toLowerCase()}...`} className="pl-9" /></div><div className="mt-6 space-y-4">{visible.length === 0 ? <div className="rounded-2xl border border-border bg-card p-12 text-center text-muted-foreground">No records match this view.</div> : visible.map(row => tab === "appointments" ? renderAppointment(row) : tab === "orders" ? renderOrder(row) : renderContact(row))}</div></div></section>;
+  return <section className="min-h-screen pt-28 pb-20 bg-muted/20"><div className="container mx-auto px-4 lg:px-8 max-w-7xl"><div className="flex flex-col md:flex-row md:items-end justify-between gap-5"><div><span className="text-sm font-semibold text-primary uppercase tracking-widest">Private admin</span><h1 className="mt-2 text-3xl md:text-5xl font-display font-extrabold">KenyaAdverts dashboard</h1><p className="mt-2 text-muted-foreground">Signed in as {user.email}. You have full access to consultations, project enquiries and contact messages.</p></div><div className="flex gap-2"><Button variant="outline" onClick={loadAll} disabled={loading}><RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />Refresh</Button><Button variant="ghost" onClick={handleSignOut}><LogOut className="h-4 w-4" />Sign out</Button></div></div><div className="mt-8 grid md:grid-cols-3 gap-3">{(Object.keys(tabLabels) as Tab[]).map(key => <button key={key} type="button" onClick={() => { setTab(key); setSearch(""); }} className={`rounded-2xl border p-5 text-left transition-all ${tab === key ? "border-primary bg-primary/10" : "border-border bg-card hover:border-primary/30"}`}><div className="flex items-center justify-between gap-3"><div className="font-display font-bold">{tabLabels[key]}</div><span className="text-2xl font-display font-extrabold">{key === "appointments" ? appointments.length : key === "orders" ? orders.length : contacts.length}</span></div><div className="mt-2 text-xs text-muted-foreground">{counts[key]} awaiting attention</div></button>)}</div><div className="mt-6 relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" /><Input value={search} onChange={e => setSearch(e.target.value)} placeholder={`Search ${tabLabels[tab].toLowerCase()}...`} className="pl-9" /></div><div className="mt-6 space-y-4">{visible.length === 0 ? <div className="rounded-2xl border border-border bg-card p-12 text-center text-muted-foreground">No records match this view.</div> : visible.map(row => tab === "appointments" ? renderAppointment(row) : tab === "orders" ? renderOrder(row) : renderContact(row))}</div></div></section>;
 }
