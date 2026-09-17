@@ -4,45 +4,19 @@ import { ArrowRight, CheckCircle2, Star, BriefcaseBusiness, ShoppingCart, Church
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/constants";
 import { fadeUp } from "@/lib/animations";
+import Seo from "@/components/Seo";
 
 const icons = { business: BriefcaseBusiness, ecommerce: ShoppingCart, church: Church, education: GraduationCap, custom: Code2, portfolio: UserRound, maintenance: Wrench };
-
 const technologies = ["React", "TypeScript", "Tailwind CSS", "Node.js", "Supabase", "Vercel", "WordPress", "M-Pesa API"];
 
 export default function ServicesPage() {
   return (
     <>
-      <section className="pt-32 pb-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-sm font-semibold text-primary uppercase tracking-widest">Our services</span>
-            <h1 className="mt-4 text-4xl md:text-6xl font-display font-extrabold max-w-4xl">Websites and digital products for <span className="text-gradient-primary">different goals.</span></h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">We don't only build church websites. We design business websites, online shops, education platforms, custom systems, organisation websites and personal brands.</p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3"><Button asChild size="lg" className="bg-gradient-primary"><Link to="/order">Tell us what you need <ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/portfolio">See our work</Link></Button></div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="pb-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-6">
-            {services.map((service, i) => {
-              const Icon = icons[service.id as keyof typeof icons] || Code2;
-              return <motion.article key={service.id} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="p-7 md:p-8 rounded-2xl bg-card border border-border hover:border-primary/35 hover:-translate-y-1 transition-all">
-                <div className="flex items-start justify-between gap-4"><div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"><Icon className="h-6 w-6 text-primary" /></div>{service.popular && <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold"><Star className="h-3 w-3" /> Popular</span>}</div>
-                <h2 className="mt-5 text-2xl font-display font-bold">{service.title}</h2>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{service.description}</p>
-                <div className="mt-6 grid sm:grid-cols-2 gap-3">{service.features.map((feature) => <span key={feature} className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />{feature}</span>)}</div>
-                <Button asChild size="sm" variant="outline" className="mt-7"><Link to="/order">Get a quote <ArrowRight className="ml-1 h-3 w-3" /></Link></Button>
-              </motion.article>;
-            })}
-          </div>
-        </div>
-      </section>
-
+      <Seo title="Web Design & Development Services Kenya | KenyaAdverts" description="Explore KenyaAdverts services: business websites, e-commerce stores, schools, organisations, marketplaces, blogs, custom web applications and website maintenance." path="/services" />
+      <section className="pt-32 pb-20"><div className="container mx-auto px-4 lg:px-8"><motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}><span className="text-sm font-semibold text-primary uppercase tracking-widest">Our services</span><h1 className="mt-4 text-4xl md:text-6xl font-display font-extrabold max-w-4xl">Websites and digital products for <span className="text-gradient-primary">different goals.</span></h1><p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">We design business websites, online shops, education platforms, custom systems, organisation websites, publishing sites and personal brands.</p><div className="mt-7 flex flex-col sm:flex-row gap-3"><Button asChild size="lg" className="bg-gradient-primary"><Link to="/order">Tell us what you need <ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/portfolio">See our work</Link></Button></div></motion.div></div></section>
+      <section className="pb-24"><div className="container mx-auto px-4 lg:px-8"><div className="grid md:grid-cols-2 gap-6">{services.map((service, i) => { const Icon = icons[service.id as keyof typeof icons] || Code2; return <motion.article key={service.id} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="p-7 md:p-8 rounded-2xl bg-card border border-border hover:border-primary/35 hover:-translate-y-1 transition-all"><div className="flex items-start justify-between gap-4"><div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"><Icon className="h-6 w-6 text-primary" /></div>{service.popular && <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold"><Star className="h-3 w-3" /> Popular</span>}</div><h2 className="mt-5 text-2xl font-display font-bold">{service.title}</h2><p className="mt-3 text-muted-foreground leading-relaxed">{service.description}</p><div className="mt-6 grid sm:grid-cols-2 gap-3">{service.features.map((feature) => <span key={feature} className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-primary mt-0.5 shrink-0" />{feature}</span>)}</div><Button asChild size="sm" variant="outline" className="mt-7"><Link to="/order">Discuss this service <ArrowRight className="ml-1 h-3 w-3" /></Link></Button></motion.article>; })}</div></div></section>
       <section className="py-20 bg-muted/30"><div className="container mx-auto px-4 lg:px-8 text-center"><h2 className="text-3xl md:text-4xl font-display font-extrabold">Tools we use</h2><p className="mt-3 text-muted-foreground">We choose technology based on what the project needs, not a one-size-fits-all stack.</p><div className="mt-8 flex flex-wrap justify-center gap-3">{technologies.map((tech) => <span key={tech} className="px-4 py-2 rounded-full text-sm bg-card border border-border">{tech}</span>)}</div></div></section>
-
-      <section className="py-24"><div className="container mx-auto px-4 lg:px-8 text-center"><h2 className="text-3xl md:text-5xl font-display font-extrabold">Not sure which service fits?</h2><p className="mt-4 text-muted-foreground max-w-xl mx-auto">Tell us your idea, budget and what you want the website to do. We'll help you define the right scope.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary"><Link to="/order">Start a project <ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/contact">Contact us</Link></Button></div></div></section>
+      <section className="py-24"><div className="container mx-auto px-4 lg:px-8 text-center"><h2 className="text-3xl md:text-5xl font-display font-extrabold">Not sure which service fits?</h2><p className="mt-4 text-muted-foreground max-w-xl mx-auto">Tell us your idea, audience, content and required features. We will help you define the right scope.</p><div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center"><Button asChild size="lg" className="bg-gradient-primary"><Link to="/order">Start a project <ArrowRight className="ml-2 h-4 w-4" /></Link></Button><Button asChild size="lg" variant="outline"><Link to="/contact">Contact us</Link></Button></div></div></section>
     </>
   );
 }
