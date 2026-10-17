@@ -12,6 +12,7 @@ import { resolve } from "node:path";
 const root = process.cwd();
 const BLOG_DATA_PATH = resolve(root, "src/lib/blogData.ts");
 const BLOG_CONTENT_PATH = resolve(root, "src/lib/blogContent.tsx");
+const USED_TOPICS_PATH = resolve(root, "scripts/blog-topics-used.json");
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const WHATSAPP_URL = "https://wa.me/254115475543";
 
@@ -196,9 +197,23 @@ async function main() {
     readFile(BLOG_CONTENT_PATH, "utf8"),
   ]);
 
-  const existingSlugs = new Set([...blogDataSrc.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]));
+  // Track used topics explicitly by the TOPIC_POOL's own text, in a small
+  // state file - NOT by checking whether slugify(topic) appears as an
+  // existing slug. That earlier approach was broken: the LLM writes its own
+  // title (which often differs in wording/capitalization from the topic
+  // string), so the derived slug rarely matched, and the same topic got
+  // picked and generated multiple times (shipped 3 duplicate "M-Pesa
+  // integration" posts and 2 near-duplicate "website cost" posts on
+  // 2026-10-17 before this fix).
+  let usedTopics = [];
+  try {
+    usedTopics = JSON.parse(await readFile(USED_TOPICS_PATH, "utf8"));
+  } catch {
+    usedTopics = [];
+  }
+  const usedTopicsSet = new Set(usedTopics);
 
-  const nextTopic = TOPIC_POOL.find(({ topic }) => !existingSlugs.has(slugify(topic)));
+  const nextTopic = TOPIC_POOL.find(({ topic }) => !usedTopicsSet.has(topic));
   if (!nextTopic) {
     console.log("All topics in the pool have been used. Nothing to generate today - add more topics to TOPIC_POOL.");
     process.exit(0);
@@ -219,7 +234,16 @@ async function main() {
 
   console.log(`Article validated: ${validation.wordCount} words, ${article.sections.length} sections.`);
 
-  const slug = slugify(article.title);
+  const existingSlugs = new Set([...blogDataSrc.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]));
+  let slug = slugify(article.title);
+  if (existingSlugs.has(slug)) {
+    // Defensive fallback: if the generated title happens to slugify to an
+    // already-used URL, disambiguate rather than silently colliding.
+    let n = 2;
+    while (existingSlugs.has(`${slug}-${n}`)) n++;
+    slug = `${slug}-${n}`;
+    console.log(`Slug collision detected, using "${slug}" instead.`);
+  }
   const today = new Date().toISOString().slice(0, 10);
 
   // --- Append to blogData.ts ---
@@ -263,6 +287,7 @@ async function main() {
 
   await writeFile(BLOG_DATA_PATH, updatedBlogData, "utf8");
   await writeFile(BLOG_CONTENT_PATH, updatedBlogContent, "utf8");
+  await writeFile(USED_TOPICS_PATH, JSON.stringify([...usedTopics, nextTopic.topic], null, 2) + "\n", "utf8");
 
   console.log(`Wrote new post: /blog/${slug}`);
   console.log(`WhatsApp CTA included: ${WHATSAPP_URL}`);

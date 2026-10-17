@@ -40,7 +40,7 @@ jobs:
       - name: Check for changes
         id: check
         run: |
-          if git diff --quiet -- src/lib/blogData.ts src/lib/blogContent.tsx public/sitemap.xml; then
+          if git diff --quiet -- src/lib/blogData.ts src/lib/blogContent.tsx public/sitemap.xml scripts/blog-topics-used.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -51,6 +51,6 @@ jobs:
         run: |
           git config user.name "kenyaadverts-bot"
           git config user.email "hydrocephcare@gmail.com"
-          git add src/lib/blogData.ts src/lib/blogContent.tsx public/sitemap.xml
+          git add src/lib/blogData.ts src/lib/blogContent.tsx public/sitemap.xml scripts/blog-topics-used.json
           git commit -m "Auto-generate daily blog post (Groq-generated, validated before commit)"
           git push
