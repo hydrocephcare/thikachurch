@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_URL, WHATSAPP_ORDER_URL, portfolioProjects } from "@/lib/constants";
-import heroBg from "@/assets/hero-dark.jpg";
 import { blogPosts } from "@/lib/blogData";
 
 const serviceCards = [
@@ -85,12 +84,19 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroBg} alt="Modern website design and development" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
-          <div className="absolute inset-0 bg-background/80" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/65 to-background" />
-        </div>
+      <section className="relative min-h-[88vh] flex items-center overflow-hidden bg-background">
+        <div
+          className="absolute inset-0 opacity-[0.4] dark:opacity-[0.15]"
+          style={{
+            backgroundImage: "radial-gradient(hsl(var(--primary) / 0.35) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+          }}
+        />
+        <div className="absolute -top-32 -left-24 h-[28rem] w-[28rem] rounded-full bg-primary/25 blur-[110px]" />
+        <div className="absolute top-10 right-0 h-[24rem] w-[24rem] rounded-full bg-cyan-400/20 blur-[110px]" />
+        <div className="absolute bottom-0 left-1/3 h-[20rem] w-[20rem] rounded-full bg-blue-500/10 blur-[100px]" />
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-28 pb-20">
           <div className="max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/10 text-primary text-sm font-semibold">

@@ -69,8 +69,8 @@ export default function BlogPostPage() {
       </section>
 
       <section className="py-10 md:py-16">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          {ContentComponent ? <ContentComponent /> : <div className="prose prose-lg max-w-none dark:prose-invert"><p>{post.excerpt}</p><p>This article is part of the KenyaAdverts knowledge library. Explore the related guides below for more practical information.</p></div>}
+        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+          {ContentComponent ? <ContentComponent /> : <div className="prose prose-lg dark:prose-invert"><p>{post.excerpt}</p><p>This article is part of the KenyaAdverts knowledge library. Explore the related guides below for more practical information.</p></div>}
         </div>
       </section>
 
