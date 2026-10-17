@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "how-much-should-a-small-business-website-really-cost",
+    slug: "how-much-should-a-small-business-website-really-cost",
+    title: "How Much Should a Small Business Website Really Cost?",
+    metaTitle: "Website Pricing Guide – KenyaAdverts Small Business Cost",
+    metaDescription: "Discover the real factors that determine a small business website price and learn how to budget wisely. KenyaAdverts explains transparent pricing.",
+    excerpt: "A clear breakdown of the elements that shape website costs helps small business owners avoid surprise fees and choose the right solution.",
+    category: "Pricing & Planning",
+    tags: ["website pricing","small business","web development","budgeting","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-10-17",
+    updatedAt: "2026-10-17",
+    featured: false,
+  },
+  {
     id: "how-much-should-a-small-business-website-really-cost-in-kenya",
     slug: "how-much-should-a-small-business-website-really-cost-in-kenya",
     title: "How Much Should a Small Business Website Really Cost in Kenya?",
