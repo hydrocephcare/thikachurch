@@ -8,7 +8,7 @@ import { getBlogPostBySlug, blogPosts } from "@/lib/blogData";
 import { blogContentMap } from "@/lib/blogContent";
 import { WHATSAPP_URL } from "@/lib/constants";
 
-const SITE = "https://kenyaadverts.co.ke";
+const SITE = "https://www.kenyaadverts.co.ke";
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();

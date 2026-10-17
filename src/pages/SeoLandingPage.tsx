@@ -119,9 +119,9 @@ export default function SeoLandingPage() {
     "@type": "WebPage",
     name: page.heading,
     description: page.description,
-    url: `https://kenyaadverts.co.ke${path}`,
+    url: `https://www.kenyaadverts.co.ke${path}`,
     about: page.keywords,
-    isPartOf: { "@type": "WebSite", name: "KenyaAdverts.co.ke", url: "https://kenyaadverts.co.ke" },
+    isPartOf: { "@type": "WebSite", name: "KenyaAdverts.co.ke", url: "https://www.kenyaadverts.co.ke" },
   };
 
   return (

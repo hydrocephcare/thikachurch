@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getBlogPostBySlug } from "@/lib/blogData";
 
-const SITE = "https://kenyaadverts.co.ke";
+const SITE = "https://www.kenyaadverts.co.ke";
 
 const routeSeo: Record<string, { title: string; description: string }> = {
   "/": {

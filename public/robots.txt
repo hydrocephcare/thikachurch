@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-Sitemap: https://kenyaadverts.co.ke/sitemap.xml
+Sitemap: https://www.kenyaadverts.co.ke/sitemap.xml

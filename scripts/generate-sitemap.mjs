@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
-const SITE = "https://kenyaadverts.co.ke";
+const SITE = "https://www.kenyaadverts.co.ke";
 const root = process.cwd();
 
 const staticRoutes = [

@@ -23,7 +23,7 @@ export default function PortfolioPage() {
     "@type": "CollectionPage",
     name: "KenyaAdverts Web Design & Development Portfolio",
     description: "Real website and web application projects built by KenyaAdverts across marketplaces, business, education, e-commerce, publishing and organisations.",
-    url: "https://kenyaadverts.co.ke/portfolio",
+    url: "https://www.kenyaadverts.co.ke/portfolio",
     inLanguage: "en",
     mainEntity: {
       "@type": "ItemList",
