@@ -20,6 +20,7 @@ import ContactPage from "@/pages/ContactPage";
 import FaqPage from "@/pages/FaqPage";
 import SeoLandingPage from "@/pages/SeoLandingPage";
 import GlobalSeoLandingPage from "@/pages/GlobalSeoLandingPage";
+import CityLandingPage from "@/pages/CityLandingPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,10 @@ const seoSlugs = [
 
 const globalSeoSlugs = [
   "website-design-worldwide", "affordable-website-design", "business-website-design-worldwide", "ecommerce-website-development-worldwide", "custom-web-application-development", "python-web-development", "react-web-development", "wordpress-alternative-custom-websites", "seo-website-development", "website-maintenance-support-worldwide", "website-redesign-worldwide", "landing-page-design-worldwide", "portfolio-website-design-worldwide", "school-website-development-worldwide", "marketplace-development-worldwide", "blog-website-development-worldwide", "web-design-for-startups",
+];
+
+const citySlugs = [
+  "web-design-nairobi", "web-design-mombasa", "web-design-kisumu", "web-design-eldoret", "web-design-nakuru",
 ];
 
 const App = () => (
@@ -57,6 +62,7 @@ const App = () => (
               <Route path="/faq" element={<FaqPage />} />
               {seoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<SeoLandingPage />} />)}
               {globalSeoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<GlobalSeoLandingPage />} />)}
+              {citySlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<CityLandingPage />} />)}
             </Route>
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/admin/appointments" element={<AdminAppointmentsPage />} />

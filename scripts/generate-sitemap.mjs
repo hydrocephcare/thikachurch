@@ -20,6 +20,7 @@ function extractSlugs(source, variableName) {
 
 const seoSlugs = extractSlugs(appSource, "seoSlugs");
 const globalSeoSlugs = extractSlugs(appSource, "globalSeoSlugs");
+const citySlugs = extractSlugs(appSource, "citySlugs");
 const blogEntries = [...blogSource.matchAll(/\{[\s\S]*?slug:\s*\"([^\"]+)\"[\s\S]*?publishedAt:\s*\"([^\"]+)\"[\s\S]*?updatedAt:\s*\"([^\"]+)\"[\s\S]*?\}/g)]
   .map((match) => ({ path: `/blog/${match[1]}`, lastmod: match[3] || match[2] }));
 
@@ -28,6 +29,7 @@ const urls = [
   ...staticRoutes.map((path) => ({ path, lastmod: today })),
   ...seoSlugs.map((path) => ({ path, lastmod: today })),
   ...globalSeoSlugs.map((path) => ({ path, lastmod: today })),
+  ...citySlugs.map((path) => ({ path, lastmod: today })),
   ...blogEntries,
 ];
 

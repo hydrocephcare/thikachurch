@@ -1,8 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowRight, CheckCircle2, MessageCircle, Search, Smartphone, Zap, Shield, Code2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, Search, Smartphone, Zap, Shield, Code2, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
 import { WHATSAPP_URL } from "@/lib/constants";
+import RelatedPages from "@/components/RelatedPages";
 
 const pages = {
   "business-website-design-kenya": {
@@ -13,6 +15,10 @@ const pages = {
     audience: ["SMEs and growing companies", "Consultants and professionals", "Service businesses", "Kenyan brands expanding online"],
     features: ["Mobile-first responsive design", "Services, team and company pages", "WhatsApp and enquiry forms", "Google-friendly technical SEO", "Maps, social links and contact tools", "Analytics and performance setup"],
     keywords: "business website Kenya, company website design Kenya, web design Nairobi, professional website Kenya",
+    faqs: [
+      { q: "Do I need a business website if I already use WhatsApp Business?", a: "WhatsApp is great for conversations, but it can't be found on Google, doesn't show up when someone searches your company name, and doesn't build the same credibility as a proper website. Most of our business website clients keep WhatsApp as their contact channel - the website just gives customers a reason to trust you before they message." },
+      { q: "What makes a Kenyan business website different from a generic template?", a: "Mobile-first layout matters more here since most visitors browse on a phone over mobile data, not desktop broadband. We also build in WhatsApp contact buttons by default and keep pages light so they load reasonably on slower connections, rather than assuming fast fibre everywhere." },
+    ],
   },
   "ecommerce-website-design-kenya": {
     title: "E-Commerce Website Design Kenya | Online Shops",
@@ -22,6 +28,10 @@ const pages = {
     audience: ["Retailers and product brands", "Fashion and beauty businesses", "Electronics and specialty shops", "Businesses moving from WhatsApp-only sales"],
     features: ["Product catalogue and categories", "Cart and checkout flows", "M-Pesa/payment integration options", "Order management and notifications", "Mobile-first product pages", "Product SEO and structured data"],
     keywords: "ecommerce website Kenya, online shop Kenya, e-commerce web design Nairobi, M-Pesa online store",
+    faqs: [
+      { q: "Can customers pay with M-Pesa directly on the site?", a: "Yes - we build M-Pesa STK Push or Paybill-based checkout so customers pay from their phone without leaving the site, instead of sending money separately and screenshotting proof of payment." },
+      { q: "I currently sell through Instagram/WhatsApp. Is it worth moving to a store?", a: "It depends on order volume. If you're manually tracking orders in chat threads, a store with real order management, stock tracking and automatic notifications usually pays for itself once you're past a handful of orders a week - below that, WhatsApp alone may still be fine." },
+    ],
   },
   "online-store-development-kenya": {
     title: "Online Store Development Kenya | M-Pesa Shops",
@@ -31,6 +41,10 @@ const pages = {
     audience: ["Existing shops going online", "Instagram and WhatsApp sellers", "Manufacturers and distributors", "Service businesses selling packages or bookings"],
     features: ["Search-friendly product URLs", "Categories and filters", "Stock and order workflows", "M-Pesa-ready payment architecture", "Customer notifications", "Admin tools for daily management"],
     keywords: "online store development Kenya, M-Pesa shop website, online shopping website Kenya, ecommerce developer Nairobi",
+    faqs: [
+      { q: "How is this different from the e-commerce website design page?", a: "Same underlying capability, different starting point: this page is for businesses that already know their catalogue and operations and want a store built around existing stock and processes, rather than starting from a blank design brief." },
+      { q: "Can I manage stock and orders myself after launch?", a: "Yes - every store we build includes an admin area for updating products, tracking stock and viewing orders, so you're not dependent on us for day-to-day changes." },
+    ],
   },
   "blog-website-design-kenya": {
     title: "Blog Website Design Kenya | SEO Blogging Sites",
@@ -40,6 +54,10 @@ const pages = {
     audience: ["Personal and professional bloggers", "Business content teams", "Education publishers", "Media and niche publications"],
     features: ["Fast article and category pages", "SEO titles and descriptions", "Author and publication information", "Search and related-content sections", "Social sharing and newsletter-ready layouts", "XML sitemap and crawl-friendly structure"],
     keywords: "blog website Kenya, blogging website design Nairobi, SEO blog development Kenya, publishing website developer",
+    faqs: [
+      { q: "Will my blog actually rank on Google, or is that up to content?", a: "Both matter. We handle the technical side - clean URLs, metadata, sitemap, internal linking, page speed - so nothing on the build holds you back. Ranking for specific keywords still depends on writing genuinely useful content, which is on the content side, not something a template alone solves." },
+      { q: "Can you migrate an existing blog (WordPress or otherwise)?", a: "Yes, we can rebuild a blog with its existing content and set up proper redirects from old URLs so you don't lose existing search rankings in the move." },
+    ],
   },
   "news-website-development-kenya": {
     title: "News Website Development Kenya | Media Websites",
@@ -49,6 +67,10 @@ const pages = {
     audience: ["Digital news publications", "County and community media", "Industry publications", "Independent journalists and media teams"],
     features: ["News categories and topic pages", "Article and author pages", "Search and related stories", "Mobile-first reading experience", "SEO metadata and canonical URLs", "Video and image publishing support"],
     keywords: "news website Kenya, media website development Kenya, online newspaper website, news portal developer Nairobi",
+    faqs: [
+      { q: "Can the site handle breaking news traffic spikes?", a: "That depends on hosting choice as much as the codebase - we build on modern hosting (such as Vercel) designed to handle sudden traffic increases, rather than a single shared server that falls over under load." },
+      { q: "Do you build a content management system so non-technical staff can publish?", a: "Yes - a news site needs editors publishing daily without a developer involved, so we build around a proper CMS/admin workflow rather than hand-coding every article." },
+    ],
   },
   "video-streaming-website-kenya": {
     title: "Video Streaming Website Kenya | Video Platforms",
@@ -58,6 +80,10 @@ const pages = {
     audience: ["Video creators and publishers", "Education and training platforms", "Churches and organisations", "Media and entertainment brands"],
     features: ["Video library and categories", "Creator/channel pages", "Searchable video content", "Embedded or hosted video architecture", "Membership and access-control options", "Video SEO and structured data"],
     keywords: "video streaming website Kenya, video platform development Nairobi, custom video website, streaming platform developer Kenya",
+    faqs: [
+      { q: "Do you host the video files yourselves?", a: "Usually not directly - serving video at scale needs dedicated infrastructure (CDN, transcoding), so we typically architect the site around a video hosting service (e.g. Mux, Cloudflare Stream, YouTube/Vimeo embeds) behind your own branded interface, rather than self-hosting raw video files." },
+      { q: "Can this restrict content to paying members only?", a: "Yes - membership and access-control is one of the features we scope in, so free and paid content can be separated with real authentication, not just a hidden page URL." },
+    ],
   },
   "youtube-like-website-development": {
     title: "YouTube-Like Website Development Kenya | Video Platform",
@@ -67,6 +93,10 @@ const pages = {
     audience: ["Creator communities", "Niche video platforms", "Education video networks", "Corporate or organisation media libraries"],
     features: ["User and creator profiles", "Channels and playlists", "Video upload workflows", "Search, categories and discovery", "Comments and engagement options", "Cloud storage/CDN integration planning"],
     keywords: "YouTube clone Kenya, YouTube-like website development, video sharing platform Kenya, video app developer Nairobi",
+    faqs: [
+      { q: "Is building a full YouTube clone realistic for a small budget?", a: "A literal YouTube-scale platform (unlimited uploads, global CDN, recommendation algorithms) is a multi-year engineering effort, not a website project. What's realistic at a project scale is a focused version for a specific community or niche, with curated uploads rather than open public upload at unlimited scale - we'd scope the real requirement with you before quoting." },
+      { q: "Who uploads videos - us, admins, or any user?", a: "This depends entirely on your use case, and it's the first thing we'd clarify: an open-upload platform needs moderation tooling that a curated, admin-only-upload platform doesn't." },
+    ],
   },
   "netflix-like-streaming-platform": {
     title: "Netflix-Like Streaming Platform Kenya | OTT Development",
@@ -76,6 +106,10 @@ const pages = {
     audience: ["Film and entertainment brands", "Education and training providers", "Faith-based media libraries", "Niche subscription video services"],
     features: ["Content catalogue and collections", "Profiles and user accounts", "Subscription/access models", "Watch pages and responsive playback", "Admin content management", "Video delivery and CDN architecture"],
     keywords: "Netflix clone Kenya, OTT platform Kenya, streaming app development Nairobi, subscription video platform developer",
+    faqs: [
+      { q: "How does subscription billing work for a Kenyan audience?", a: "We'd design around M-Pesa for recurring or one-time payments where that fits your audience, alongside or instead of card-based billing, since relying on card-only subscriptions excludes a large share of Kenyan users." },
+      { q: "Where is video content actually stored and delivered from?", a: "We'd architect this around a dedicated video delivery service rather than storing raw video on a standard web server - that's the only way to get reliable playback and reasonable cost at any real scale." },
+    ],
   },
   "marketplace-website-development-kenya": {
     title: "Marketplace Website Development Kenya | Classifieds",
@@ -85,6 +119,10 @@ const pages = {
     audience: ["General classifieds", "Property and rental marketplaces", "Jobs and services platforms", "Niche buying and selling communities"],
     features: ["Seller profiles and listings", "Search and category filters", "Listing images and details", "Enquiry and contact workflows", "Admin moderation tools", "Optional payments and featured listings"],
     keywords: "marketplace website Kenya, classifieds website development, online marketplace Nairobi, marketplace developer Kenya",
+    faqs: [
+      { q: "Have you actually built a marketplace before, or is this theoretical?", a: "Yes - Kenya Adverts Marketplace, one of our own live projects, is a classifieds marketplace with listings, search and mobile-first browsing. You can see it in our portfolio rather than taking our word for it." },
+      { q: "How do you handle fake or spam listings?", a: "Admin moderation tools are a standard part of a marketplace build - new or flagged listings can require approval before going live, and sellers/listings can be suspended, rather than everything publishing instantly with no review." },
+    ],
   },
   "school-website-design-kenya": {
     title: "School Website Design Kenya | Education Websites",
@@ -94,6 +132,10 @@ const pages = {
     audience: ["Primary and secondary schools", "Colleges and training centres", "Tutors and education brands", "Student communities and resource hubs"],
     features: ["Admissions and programme pages", "School news and announcements", "Events and calendar sections", "Resources and downloads", "Enquiry and contact forms", "SEO-friendly education content"],
     keywords: "school website Kenya, school web design Nairobi, education website development Kenya, college website developer",
+    faqs: [
+      { q: "Can parents download forms or documents from the site?", a: "Yes - a resources/downloads section for admission forms, fee structures and circulars is a standard part of a school site build, so parents don't need to call the office for basic paperwork." },
+      { q: "Do you have experience with education platforms specifically?", a: "Yes - Ompath Study, our medical education platform, and KCSE Resource Hub, a study resource site, are both live projects in our portfolio built for education audiences specifically." },
+    ],
   },
   "custom-web-application-development-kenya": {
     title: "Custom Web Application Development Kenya | Web Apps",
@@ -103,6 +145,10 @@ const pages = {
     audience: ["Internal business systems", "Customer portals", "Management and booking systems", "Education and membership platforms"],
     features: ["Custom dashboards and roles", "Database-backed workflows", "Forms, approvals and reports", "Authentication and permissions", "API and third-party integrations", "Supabase and modern web-stack options"],
     keywords: "web application development Kenya, custom software Nairobi, web app developer Kenya, business management system developer",
+    faqs: [
+      { q: "How is a web application different from a website, in practice?", a: "A website mainly presents information; a web application has logins, roles, and data that changes based on who's using it - think a booking system, an admin dashboard, or a members' portal, rather than a page of static content." },
+      { q: "What does a typical custom web app project need from me upfront?", a: "A clear description of the workflow it needs to replace or support - who uses it, what they need to do, and what decisions or data drive it. We turn that into a scoped plan; you don't need technical specs, just a clear picture of the problem." },
+    ],
   },
 };
 
@@ -111,6 +157,7 @@ type PageKey = keyof typeof pages;
 export default function SeoLandingPage() {
   const { slug } = useParams();
   const page = slug ? pages[slug as PageKey] : undefined;
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   if (!page) return null;
 
   const path = `/${slug}`;
@@ -123,11 +170,17 @@ export default function SeoLandingPage() {
     about: page.keywords,
     isPartOf: { "@type": "WebSite", name: "KenyaAdverts.co.ke", url: "https://www.kenyaadverts.co.ke" },
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: page.faqs.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
+  };
 
   return (
     <>
       <Seo title={page.title} description={page.description} path={path} />
       <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="max-w-4xl">
@@ -165,6 +218,28 @@ export default function SeoLandingPage() {
           </div>
         </div>
       </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-center">Questions about {page.heading.toLowerCase()}</h2>
+          <div className="mt-10 space-y-3">
+            {page.faqs.map((item, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={item.q} className="rounded-2xl border border-border bg-card overflow-hidden">
+                  <button type="button" onClick={() => setOpenFaq(isOpen ? null : i)} aria-expanded={isOpen} className="w-full flex items-center justify-between gap-4 p-5 text-left">
+                    <span className="font-semibold">{item.q}</span>
+                    <ChevronDown className={`h-5 w-5 shrink-0 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {isOpen && <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">{item.a}</p>}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <RelatedPages exclude={path} />
 
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
