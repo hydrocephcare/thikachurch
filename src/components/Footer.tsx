@@ -22,7 +22,7 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
     { label: "Knowledge Bank", href: "/knowledge-bank" },
     { label: "Start a Project", href: "/order" },
-    { label: "FAQ", href: "/about#faq" },
+    { label: "FAQ", href: "/faq" },
     { label: "Case Studies", href: "/portfolio" },
   ],
 };

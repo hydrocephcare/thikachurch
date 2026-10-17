@@ -41,6 +41,10 @@ const routeSeo: Record<string, { title: string; description: string }> = {
     title: "Book a Web Design Consultation | KenyaAdverts",
     description: "Book a consultation with KenyaAdverts to discuss your website, online store, web application, SEO or digital project requirements.",
   },
+  "/faq": {
+    title: "Frequently Asked Questions | KenyaAdverts",
+    description: "Common questions about pricing, timelines, M-Pesa integration, hosting and maintenance for websites and web applications built by KenyaAdverts.",
+  },
 };
 
 export default function RouteSeo() {

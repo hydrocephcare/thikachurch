@@ -17,6 +17,7 @@ import AdminPage from "@/pages/AdminPage";
 import AdminAppointmentsPage from "@/pages/AdminAppointmentsPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
+import FaqPage from "@/pages/FaqPage";
 import SeoLandingPage from "@/pages/SeoLandingPage";
 import GlobalSeoLandingPage from "@/pages/GlobalSeoLandingPage";
 import NotFound from "./pages/NotFound";
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/book-appointment" element={<BookAppointmentPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/faq" element={<FaqPage />} />
               {seoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<SeoLandingPage />} />)}
               {globalSeoSlugs.map((slug) => <Route key={slug} path={`/${slug}`} element={<GlobalSeoLandingPage />} />)}
             </Route>
