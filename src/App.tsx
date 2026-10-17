@@ -7,28 +7,36 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import NotFound from "./pages/NotFound";
+import HomePage from "@/pages/HomePage";
+import PortfolioPage from "@/pages/PortfolioPage";
+import ServicesPage from "@/pages/ServicesPage";
+import KnowledgeBankPage from "@/pages/KnowledgeBankPage";
+import BlogPage from "@/pages/BlogPage";
+import BlogPostPage from "@/pages/BlogPostPage";
+import OrderPage from "@/pages/OrderPage";
+import AboutPage from "@/pages/AboutPage";
+import ContactPage from "@/pages/ContactPage";
+import FaqPage from "@/pages/FaqPage";
+import PricingPage from "@/pages/PricingPage";
+import SeoLandingPage from "@/pages/SeoLandingPage";
+import GlobalSeoLandingPage from "@/pages/GlobalSeoLandingPage";
+import CityLandingPage from "@/pages/CityLandingPage";
 
-// Route-level code splitting: each page becomes its own chunk, fetched only
-// when that route is actually visited, instead of all ~40 pages shipping in
-// one ~1.2MB initial bundle. Cuts the JS a first-time visitor has to
-// download before the page they actually asked for can render.
-const HomePage = lazy(() => import("@/pages/HomePage"));
-const PortfolioPage = lazy(() => import("@/pages/PortfolioPage"));
-const ServicesPage = lazy(() => import("@/pages/ServicesPage"));
-const KnowledgeBankPage = lazy(() => import("@/pages/KnowledgeBankPage"));
-const BlogPage = lazy(() => import("@/pages/BlogPage"));
-const BlogPostPage = lazy(() => import("@/pages/BlogPostPage"));
-const OrderPage = lazy(() => import("@/pages/OrderPage"));
+// Lazy-load ONLY pages that are not publicly indexed: /admin* is blocked by
+// robots.txt, and /book-appointment is gated behind a Google sign-in wall -
+// none of these need to render instantly for a crawler. Every other route
+// above is public, content-bearing and meant to be indexed, so it stays in
+// the main bundle: an earlier attempt to lazy-load everything was reverted
+// after discovering it creates a real timing race (confirmed via headless
+// testing - a plain page snapshot caught the Suspense fallback, i.e. blank
+// content, before the chunk finished loading). Given how much effort went
+// into fixing this site's crawlability, no new crawl-timing risk is worth
+// it for SEO-facing pages. BookAppointmentPage alone also pulls in the
+// ~330KB Firebase client SDK, so keeping it lazy is the one clearly
+// worthwhile tradeoff here.
 const BookAppointmentPage = lazy(() => import("@/pages/BookAppointmentPage"));
 const AdminPage = lazy(() => import("@/pages/AdminPage"));
 const AdminAppointmentsPage = lazy(() => import("@/pages/AdminAppointmentsPage"));
-const AboutPage = lazy(() => import("@/pages/AboutPage"));
-const ContactPage = lazy(() => import("@/pages/ContactPage"));
-const FaqPage = lazy(() => import("@/pages/FaqPage"));
-const PricingPage = lazy(() => import("@/pages/PricingPage"));
-const SeoLandingPage = lazy(() => import("@/pages/SeoLandingPage"));
-const GlobalSeoLandingPage = lazy(() => import("@/pages/GlobalSeoLandingPage"));
-const CityLandingPage = lazy(() => import("@/pages/CityLandingPage"));
 
 function RouteFallback() {
   // Deliberately minimal and matched to the page background so a fast

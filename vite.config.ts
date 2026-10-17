@@ -20,4 +20,19 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Rollup's automatic chunking doesn't reliably keep large libraries
+        // only used by non-indexed pages (Admin*, the Google-sign-in-gated
+        // BookAppointmentPage) out of the main bundle - it was observed
+        // merging the ~330KB Firebase SDK into the main chunk even though
+        // only those lazy-loaded pages import it. Pinning it explicitly
+        // guarantees it stays isolated regardless of Rollup's heuristics.
+        manualChunks: {
+          firebase: ["firebase/app", "firebase/auth"],
+        },
+      },
+    },
+  },
 }));
