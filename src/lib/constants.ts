@@ -1,10 +1,11 @@
-import portfolioMkucu from "@/assets/portfolio-mkucu.png";
-import portfolioMedlife from "@/assets/portfolio-medlife.png";
-import portfolioAzaniisp from "@/assets/portfolio-azaniisp.png";
+import portfolioMkucu from "@/assets/portfolio-mkucu.webp";
+import portfolioMedlife from "@/assets/portfolio-medlife.webp";
+import portfolioAzaniisp from "@/assets/portfolio-azaniisp.webp";
 import portfolioKcse from "@/assets/portfolio-kcse.jpg";
-import portfolioKenyaAdvertsCom from "@/assets/portfolio-kenyaadverts-com.png";
-import portfolioKenyaAdvertsCoke from "@/assets/portfolio-kenyaadverts-coke.png";
-import portfolioOmpath from "@/assets/portfolio-ompathstudy.png";
+import portfolioKenyaAdvertsCom from "@/assets/portfolio-kenyaadverts-com.webp";
+import portfolioKenyaAdvertsCoke from "@/assets/portfolio-kenyaadverts-coke.webp";
+import portfolioOmpath from "@/assets/portfolio-ompathstudy.webp";
+import portfolioAvantCinema from "@/assets/portfolio-avantcinema.webp";
 
 export const WHATSAPP_NUMBER = "254115475543";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I'm interested in your web development services.")}`;
@@ -100,6 +101,16 @@ export const portfolioProjects: PortfolioProject[] = [
     url: "https://medlifeechos.vercel.app/",
     tags: ["Blog", "Medical", "Education", "SEO"],
     image: portfolioMedlife,
+    status: "completed",
+  },
+  {
+    id: "avant-cinema",
+    title: "Avant Cinema",
+    category: "Streaming & Entertainment",
+    description: "A film and TV streaming platform with a Netflix-style browsing experience, featured titles, watch pages and an AI assistant for content discovery.",
+    url: "https://www.avantcinematic.com",
+    tags: ["Streaming", "Entertainment", "Video Platform", "AI"],
+    image: portfolioAvantCinema,
     status: "completed",
   },
 ];

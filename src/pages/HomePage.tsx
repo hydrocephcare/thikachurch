@@ -129,7 +129,7 @@ export default function HomePage() {
       <section className="py-14 border-y border-border bg-card/40">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[["7+", "Projects & platforms shown"], ["6+", "Website categories"], ["Worldwide", "Clients & markets"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
+            {[[`${portfolioProjects.length}+`, "Projects & platforms shown"], ["6+", "Website categories"], ["Worldwide", "Clients & markets"], ["WhatsApp", "Direct support"]].map(([value, label]) => (
               <div key={label}><div className="text-2xl md:text-3xl font-display font-extrabold text-primary">{value}</div><div className="mt-1 text-sm text-muted-foreground">{label}</div></div>
             ))}
           </div>
