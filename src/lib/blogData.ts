@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "m-pesa-integration-options-for-kenyan-ecommerce-sites",
+    slug: "m-pesa-integration-options-for-kenyan-ecommerce-sites",
+    title: "M-Pesa Integration Options for Kenyan E‑Commerce Sites",
+    metaTitle: "M-Pesa Integration Guide – KenyaAdverts E‑Commerce Tips",
+    metaDescription: "Explore practical M-Pesa integration methods for Kenyan online stores, from direct API to third‑party gateways, with security and UX best practices.",
+    excerpt: "A practical guide to the various ways Kenyan e‑commerce sites can integrate M-Pesa, covering direct APIs, Paybill/Till, third‑party gateways, and security tips.",
+    category: "E-Commerce",
+    tags: ["e-commerce","mpesa","payments","kenya","web-development"],
+    readTime: "9 min",
+    publishedAt: "2026-10-17",
+    updatedAt: "2026-10-17",
+    featured: false,
+  },
+  {
     id: "how-much-should-a-small-business-website-really-cost",
     slug: "how-much-should-a-small-business-website-really-cost",
     title: "How Much Should a Small Business Website Really Cost?",
