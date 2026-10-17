@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "mobilefirst-design-why-it-matters-more-in-kenya-than-anywhere-else",
+    slug: "mobilefirst-design-why-it-matters-more-in-kenya-than-anywhere-else",
+    title: "Mobile‑First Design: Why It Matters More in Kenya Than Anywhere Else",
+    metaTitle: "Mobile‑First Design in Kenya – KenyaAdverts Insight",
+    metaDescription: "Discover why mobile‑first web design is critical for Kenyan users, how local connectivity, device habits, and search trends shape success.",
+    excerpt: "Mobile usage dominates the Kenyan web experience. This article explains why designing for mobile first is essential for businesses targeting Kenyan audiences and offers practical steps to get it right.",
+    category: "Web Design",
+    tags: ["mobile-first","web design","kenya","responsive","user experience"],
+    readTime: "9 min",
+    publishedAt: "2026-10-17",
+    updatedAt: "2026-10-17",
+    featured: false,
+  },
+  {
     id: "m-pesa-integration-options-for-kenyan-ecommerce-sites",
     slug: "m-pesa-integration-options-for-kenyan-ecommerce-sites",
     title: "M-Pesa Integration Options for Kenyan E‑Commerce Sites",
