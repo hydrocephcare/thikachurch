@@ -99,7 +99,9 @@ async function pickModel() {
 }
 
 async function generateArticle(model, topic, category) {
-  const systemPrompt = `You are a professional web development and SEO content writer for KenyaAdverts, a Kenyan web design and development agency (website: www.kenyaadverts.co.ke, WhatsApp: 0115 475 543, starter websites from KES 5,000). Write genuinely useful, specific, non-generic long-form articles. Never invent fake statistics, client names, or testimonials. Output ONLY valid JSON matching the exact schema given, no markdown fences, no commentary.`;
+  const systemPrompt = `You are a professional web development and SEO content writer for KenyaAdverts, a Kenyan web design and development agency (website: www.kenyaadverts.co.ke, WhatsApp: 0115 475 543, starter websites from KES 5,000). Write genuinely useful, specific, non-generic long-form articles.
+
+CRITICAL - do not fabricate specific numbers you cannot know are true: no invented KES price ranges for things you have not been given real data on (hosting costs, maintenance fees, SEO retainer costs, etc.), no invented percentage statistics ("X% of traffic is mobile"), no invented client names, testimonials, case studies, or survey results presented as real. Where a cost or stat would strengthen the article, either omit it, or clearly hedge it as a general industry pattern without a specific invented number (e.g. "hosting costs vary widely by provider and traffic" rather than "hosting costs KES 1,000-5,000/month"). The ONLY pricing fact you may state as fact is: KenyaAdverts starter websites begin from KES 5,000. Output ONLY valid JSON matching the exact schema given, no markdown fences, no commentary.`;
 
   const userPrompt = `Write a long-form blog article on this topic: "${topic}" (category: "${category}").
 

@@ -82,7 +82,7 @@ export default function BookAppointmentPage() {
 
   if (!user) {
     return <>
-      <Seo title="Book a Website Consultation | NexaWeb Studio" description="Sign in securely and book a website design or development consultation with NexaWeb Studio in Kenya." path="/book-appointment" />
+      <Seo title="Book a Website Consultation | KenyaAdverts" description="Sign in securely and book a website design or development consultation with KenyaAdverts in Kenya." path="/book-appointment" />
       <section className="pt-32 pb-24 bg-muted/20"><div className="container mx-auto px-4 max-w-xl"><div className="rounded-3xl border border-primary/20 bg-card p-8 md:p-10 text-center shadow-sm"><div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary"><ShieldCheck className="h-7 w-7" /></div><span className="mt-6 inline-block text-sm font-semibold text-primary uppercase tracking-widest">Secure booking</span><h1 className="mt-3 text-3xl md:text-4xl font-display font-extrabold">Sign in before booking a consultation.</h1><p className="mt-4 text-muted-foreground leading-relaxed">Appointments are linked to a verified Google account so we can reduce spam and send confirmations to the correct email address.</p><Button onClick={handleGoogleSignIn} disabled={signingIn} size="lg" className="mt-7 w-full h-12 bg-gradient-primary text-primary-foreground">{signingIn ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <LogIn className="mr-2 h-4 w-4" />}{signingIn ? "Signing in..." : "Continue with Google"}</Button><p className="mt-4 text-xs text-muted-foreground">No separate password is required for appointment booking.</p></div></div></section>
     </>;
   }
@@ -92,7 +92,7 @@ export default function BookAppointmentPage() {
   }
 
   return <>
-    <Seo title="Book a Website Consultation | NexaWeb Studio" description="Book a website design or development consultation with NexaWeb Studio in Kenya. Choose a preferred date and time and tell us what you want to build." path="/book-appointment" />
+    <Seo title="Book a Website Consultation | KenyaAdverts" description="Book a website design or development consultation with KenyaAdverts in Kenya. Choose a preferred date and time and tell us what you want to build." path="/book-appointment" />
     <section className="pt-32 pb-14 bg-muted/20"><div className="container mx-auto px-4 lg:px-8 max-w-5xl"><span className="text-sm font-semibold text-primary uppercase tracking-widest">Book a consultation</span><motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="mt-3 text-4xl md:text-6xl font-display font-extrabold">Let's discuss your <span className="text-gradient-primary">website.</span></motion.h1><p className="mt-5 text-lg text-muted-foreground max-w-2xl">Choose a date and time that works for you. Tell us what you want to build, and we'll use the consultation to understand your goals, features and next steps.</p><div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground"><ShieldCheck className="h-3.5 w-3.5 text-primary" />Signed in as <span className="font-semibold text-foreground">{user.email}</span></div></div></section>
     <section className="py-16 pb-24"><div className="container mx-auto px-4 lg:px-8 max-w-5xl grid lg:grid-cols-[1fr_320px] gap-8 items-start">
       <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-8 border border-border shadow-sm space-y-6">

@@ -5,7 +5,7 @@ const SITE = "https://www.kenyaadverts.co.ke";
 const root = process.cwd();
 
 const staticRoutes = [
-  "/", "/services", "/portfolio", "/about", "/contact", "/order", "/book-appointment", "/blog", "/knowledge-bank", "/faq",
+  "/", "/services", "/portfolio", "/about", "/contact", "/order", "/book-appointment", "/blog", "/knowledge-bank", "/faq", "/pricing",
 ];
 
 const [appSource, blogSource] = await Promise.all([

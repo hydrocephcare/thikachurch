@@ -45,6 +45,10 @@ const routeSeo: Record<string, { title: string; description: string }> = {
     title: "Frequently Asked Questions | KenyaAdverts",
     description: "Common questions about pricing, timelines, M-Pesa integration, hosting and maintenance for websites and web applications built by KenyaAdverts.",
   },
+  "/pricing": {
+    title: "Website Pricing Kenya | Starter Sites From KES 5,000 | KenyaAdverts",
+    description: "See how KenyaAdverts prices websites in Kenya: starter sites from KES 5,000, with business, e-commerce and custom application projects quoted on scope.",
+  },
 };
 
 export default function RouteSeo() {

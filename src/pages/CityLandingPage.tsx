@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, MapPin, MessageCircle, Smartphone, Wifi, Banknote, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
@@ -90,7 +90,9 @@ const cities: Record<string, City> = {
 };
 
 export default function CityLandingPage() {
-  const { slug } = useParams();
+  // Static per-slug routes (see App.tsx), not a dynamic ":slug" segment -
+  // useParams() would return nothing here. Derive from the pathname instead.
+  const slug = useLocation().pathname.replace(/^\//, "");
   const city = slug ? cities[slug] : undefined;
   if (!city) return null;
 

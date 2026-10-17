@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Globe, MessageCircle, Search, Smartphone, Zap, Shield, Code2, DollarSign, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
@@ -233,7 +233,9 @@ const pages = {
 type PageKey = keyof typeof pages;
 
 export default function GlobalSeoLandingPage() {
-  const { slug } = useParams();
+  // Static per-slug routes (see App.tsx), not a dynamic ":slug" segment -
+  // useParams() would return nothing here. Derive from the pathname instead.
+  const slug = useLocation().pathname.replace(/^\//, "");
   const page = slug ? pages[slug as PageKey] : undefined;
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   if (!page) return null;

@@ -6,10 +6,12 @@
 export interface DirectoryEntry {
   path: string;
   label: string;
-  group: "service" | "global" | "city";
+  group: "service" | "global" | "city" | "info";
 }
 
 export const pageDirectory: DirectoryEntry[] = [
+  { path: "/pricing", label: "Website Pricing Kenya", group: "info" },
+  { path: "/faq", label: "Frequently Asked Questions", group: "info" },
   // Kenya-specific service pages
   { path: "/business-website-design-kenya", label: "Business Website Design Kenya", group: "service" },
   { path: "/ecommerce-website-design-kenya", label: "E-Commerce Website Design Kenya", group: "service" },
