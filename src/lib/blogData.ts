@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "wordpress-vs-custom-built-websites-an-honest-comparison",
+    slug: "wordpress-vs-custom-built-websites-an-honest-comparison",
+    title: "WordPress vs Custom-Built Websites: An Honest Comparison",
+    metaTitle: "WordPress vs Custom Sites – KenyaAdverts Guide",
+    metaDescription: "Explore the real pros and cons of WordPress and custom-built websites, from cost and flexibility to performance and SEO, and see which fits your Kenyan business.",
+    excerpt: "We break down the key differences between WordPress and a fully custom site, helping you decide the best solution for your budget, goals, and technical needs.",
+    category: "Web Development",
+    tags: ["wordpress","custom website","web development","seo","kenya"],
+    readTime: "8 min",
+    publishedAt: "2026-10-18",
+    updatedAt: "2026-10-18",
+    featured: false,
+  },
+  {
     id: "mobilefirst-design-why-it-matters-more-in-kenya-than-anywhere-else",
     slug: "mobilefirst-design-why-it-matters-more-in-kenya-than-anywhere-else",
     title: "Mobile‑First Design: Why It Matters More in Kenya Than Anywhere Else",
