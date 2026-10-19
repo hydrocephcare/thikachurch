@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "speedy-sites-on-budget-phones-practical-tips-for-fast-loading",
+    slug: "speedy-sites-on-budget-phones-practical-tips-for-fast-loading",
+    title: "Speedy Sites on Budget Phones: Practical Tips for Fast Loading",
+    metaTitle: "Fast Websites for Budget Phones | KenyaAdverts",
+    metaDescription: "Learn how to make your site load instantly on low‑end phones with smart design, lightweight code, and affordable hosting. KenyaAdverts can help you build fast, budget‑friendly sites.",
+    excerpt: "A budget phone may lack the power of a flagship device, but with the right techniques your website can still feel instant. This guide shows how to trim, optimise and deliver content for the most constrained mobile users.",
+    category: "Performance",
+    tags: ["performance","mobile","optimization","budget","webdev"],
+    readTime: "9 min",
+    publishedAt: "2026-10-19",
+    updatedAt: "2026-10-19",
+    featured: false,
+  },
+  {
     id: "wordpress-vs-custom-built-websites-an-honest-comparison",
     slug: "wordpress-vs-custom-built-websites-an-honest-comparison",
     title: "WordPress vs Custom-Built Websites: An Honest Comparison",
