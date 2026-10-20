@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "website-accessibility-basics-every-business-site-should-get-right",
+    slug: "website-accessibility-basics-every-business-site-should-get-right",
+    title: "Website Accessibility Basics Every Business Site Should Get Right",
+    metaTitle: "Website Accessibility Basics – KenyaAdverts Guide",
+    metaDescription: "Learn essential web accessibility practices every Kenyan business site needs. Simple steps, real examples, and how KenyaAdverts can help you stay compliant.",
+    excerpt: "A practical guide that walks you through the most important accessibility features every business website must have, from semantic HTML to regular testing.",
+    category: "Accessibility",
+    tags: ["accessibility","webdesign","seo","kenya","inclusive"],
+    readTime: "9 min",
+    publishedAt: "2026-10-20",
+    updatedAt: "2026-10-20",
+    featured: false,
+  },
+  {
     id: "speedy-sites-on-budget-phones-practical-tips-for-fast-loading",
     slug: "speedy-sites-on-budget-phones-practical-tips-for-fast-loading",
     title: "Speedy Sites on Budget Phones: Practical Tips for Fast Loading",
