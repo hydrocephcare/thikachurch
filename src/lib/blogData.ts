@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "write-website-copy-that-converts-visitors-into-enquiries",
+    slug: "write-website-copy-that-converts-visitors-into-enquiries",
+    title: "Write Website Copy That Converts Visitors Into Enquiries",
+    metaTitle: "Convert Visitors to Leads – Copy Tips from KenyaAdverts",
+    metaDescription: "Learn proven copywriting steps to turn website traffic into real enquiries. Practical examples and actionable tactics for Kenyan businesses.",
+    excerpt: "Effective website copy speaks directly to visitor needs, builds trust, and guides them toward a clear enquiry. This guide walks you through each stage of the writing process.",
+    category: "Content Strategy",
+    tags: ["copywriting","conversion","contentstrategy","webdesign","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-10-21",
+    updatedAt: "2026-10-21",
+    featured: false,
+  },
+  {
     id: "website-accessibility-basics-every-business-site-should-get-right",
     slug: "website-accessibility-basics-every-business-site-should-get-right",
     title: "Website Accessibility Basics Every Business Site Should Get Right",
