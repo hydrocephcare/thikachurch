@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "paybill-vs-till-number-which-is-best-for-your-kenyan-online-store",
+    slug: "paybill-vs-till-number-which-is-best-for-your-kenyan-online-store",
+    title: "Paybill vs Till Number: Which is Best for Your Kenyan Online Store",
+    metaTitle: "Paybill vs Till Number for E‑Commerce – KenyaAdverts Guide",
+    metaDescription: "Learn the differences between Paybill and Till numbers for Kenyan online stores, how they affect payments, customer trust, and which option suits your business.",
+    excerpt: "Choosing the right payment identifier—Paybill or Till number—can streamline checkout, boost trust, and reduce friction for Kenyan e‑commerce sites. This guide breaks down their features, costs, and best‑use scenarios.",
+    category: "E-Commerce",
+    tags: ["e-commerce","paybill","till-number","kenya","online-payments","store"],
+    readTime: "9 min",
+    publishedAt: "2026-10-22",
+    updatedAt: "2026-10-22",
+    featured: false,
+  },
+  {
     id: "write-website-copy-that-converts-visitors-into-enquiries",
     slug: "write-website-copy-that-converts-visitors-into-enquiries",
     title: "Write Website Copy That Converts Visitors Into Enquiries",
