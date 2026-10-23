@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "understanding-kenyas-data-protection-act-for-your-website",
+    slug: "understanding-kenyas-data-protection-act-for-your-website",
+    title: "Understanding Kenya’s Data Protection Act for Your Website",
+    metaTitle: "Kenya Data Protection Act & Your Site | KenyaAdverts",
+    metaDescription: "Learn how Kenya’s Data Protection Act impacts website owners and what practical steps you can take to stay compliant.",
+    excerpt: "The Kenya Data Protection Act sets clear rules for handling personal data online; this guide explains the key obligations for website owners and how to implement them.",
+    category: "Security & Compliance",
+    tags: ["data protection","kenya law","website compliance","privacy","security"],
+    readTime: "9 min",
+    publishedAt: "2026-10-23",
+    updatedAt: "2026-10-23",
+    featured: false,
+  },
+  {
     id: "paybill-vs-till-number-which-is-best-for-your-kenyan-online-store",
     slug: "paybill-vs-till-number-which-is-best-for-your-kenyan-online-store",
     title: "Paybill vs Till Number: Which is Best for Your Kenyan Online Store",
