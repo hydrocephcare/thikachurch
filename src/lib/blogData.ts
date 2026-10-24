@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "booking-appointment-systems-what-small-service-businesses-really-need",
+    slug: "booking-appointment-systems-what-small-service-businesses-really-need",
+    title: "Booking & Appointment Systems: What Small Service Businesses Really Need",
+    metaTitle: "Booking Systems for Small Services | KenyaAdverts",
+    metaDescription: "Discover the essential features and practical steps for building a booking and appointment system that fits small service businesses. Learn from KenyaAdverts.",
+    excerpt: "A focused look at the features, integration tips, and design principles that make a booking system work for small service providers, with practical guidance you can apply today.",
+    category: "Web Applications",
+    tags: ["booking systems","appointment scheduling","small business","web applications","kenyaadverts"],
+    readTime: "9 min",
+    publishedAt: "2026-10-24",
+    updatedAt: "2026-10-24",
+    featured: false,
+  },
+  {
     id: "understanding-kenyas-data-protection-act-for-your-website",
     slug: "understanding-kenyas-data-protection-act-for-your-website",
     title: "Understanding Kenya’s Data Protection Act for Your Website",
