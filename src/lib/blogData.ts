@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "headless-commerce-explained-simply-when-its-worth-it-and-when-its-overkill",
+    slug: "headless-commerce-explained-simply-when-its-worth-it-and-when-its-overkill",
+    title: "Headless Commerce Explained Simply – When It’s Worth It and When It’s Overkill",
+    metaTitle: "Headless Commerce Basics – KenyaAdverts Guide",
+    metaDescription: "Learn what headless commerce is, its benefits, and when it’s unnecessary. KenyaAdverts explains in plain terms for Kenyan businesses.",
+    excerpt: "Headless commerce separates the front‑end shopping experience from the back‑end engine. This article shows how it works, when it shines, and when it adds unnecessary complexity.",
+    category: "E-Commerce",
+    tags: ["headless commerce","e-commerce","web development","api","digital strategy"],
+    readTime: "9 min",
+    publishedAt: "2026-10-25",
+    updatedAt: "2026-10-25",
+    featured: false,
+  },
+  {
     id: "booking-appointment-systems-what-small-service-businesses-really-need",
     slug: "booking-appointment-systems-what-small-service-businesses-really-need",
     title: "Booking & Appointment Systems: What Small Service Businesses Really Need",
