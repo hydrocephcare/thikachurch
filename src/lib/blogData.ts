@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "beyond-admissions-how-kenyan-schools-can-maximise-their-websites",
+    slug: "beyond-admissions-how-kenyan-schools-can-maximise-their-websites",
+    title: "Beyond Admissions: How Kenyan Schools Can Maximise Their Websites",
+    metaTitle: "KenyaAdverts: Kenyan School Websites Beyond Admissions",
+    metaDescription: "Discover practical ways Kenyan schools can turn their website into a communication hub, learning portal, community builder and data tool – beyond just admissions.",
+    excerpt: "Kenyan schools can leverage their websites for communication, digital learning, community engagement, reputation building and data‑driven decisions, turning a simple admissions page into a powerful school ecosystem.",
+    category: "Education Websites",
+    tags: ["education","websites","kenya","schools","digitallearning"],
+    readTime: "9 min",
+    publishedAt: "2026-10-29",
+    updatedAt: "2026-10-29",
+    featured: false,
+  },
+  {
     id: "headless-commerce-explained-simply-when-its-worth-it-and-when-its-overkill",
     slug: "headless-commerce-explained-simply-when-its-worth-it-and-when-its-overkill",
     title: "Headless Commerce Explained Simply – When It’s Worth It and When It’s Overkill",
