@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "a-practical-guide-to-website-backups-that-actually-get-tested",
+    slug: "a-practical-guide-to-website-backups-that-actually-get-tested",
+    title: "A Practical Guide to Website Backups That Actually Get Tested",
+    metaTitle: "Website Backup Guide – Tested Strategies | KenyaAdverts",
+    metaDescription: "Learn how to set up, automate, and regularly test website backups for reliable recovery. KenyaAdverts shares a practical, step‑by‑step guide.",
+    excerpt: "A step‑by‑step, hands‑on guide that shows you how to choose a backup strategy, automate the process, store backups safely, and regularly test restores so your site stays protected.",
+    category: "Security & Compliance",
+    tags: ["website backups","security","compliance","data protection","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-10-30",
+    updatedAt: "2026-10-30",
+    featured: false,
+  },
+  {
     id: "beyond-admissions-how-kenyan-schools-can-maximise-their-websites",
     slug: "beyond-admissions-how-kenyan-schools-can-maximise-their-websites",
     title: "Beyond Admissions: How Kenyan Schools Can Maximise Their Websites",
