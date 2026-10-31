@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "progressive-web-apps-a-lighter-alternative-to-native-mobile-apps",
+    slug: "progressive-web-apps-a-lighter-alternative-to-native-mobile-apps",
+    title: "Progressive Web Apps: A Lighter Alternative to Native Mobile Apps",
+    metaTitle: "Progressive Web Apps Explained – KenyaAdverts Guide",
+    metaDescription: "Discover how Progressive Web Apps offer a faster, cheaper, and cross‑platform alternative to native apps, and learn practical steps to build one with KenyaAdverts.",
+    excerpt: "Progressive Web Apps combine the reach of the web with app‑like experiences, delivering lighter, faster solutions that can replace many native mobile apps.",
+    category: "Web Development",
+    tags: ["pwa","web development","mobile","javascript","kenyaadverts"],
+    readTime: "9 min",
+    publishedAt: "2026-10-31",
+    updatedAt: "2026-10-31",
+    featured: false,
+  },
+  {
     id: "a-practical-guide-to-website-backups-that-actually-get-tested",
     slug: "a-practical-guide-to-website-backups-that-actually-get-tested",
     title: "A Practical Guide to Website Backups That Actually Get Tested",
