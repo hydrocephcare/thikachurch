@@ -32,7 +32,17 @@ export interface PortfolioProject {
 // Keep this list focused on real projects already represented by repository assets.
 // The order intentionally leads with commercial/client-facing work before education
 // and organisation projects so the portfolio communicates broader web-development experience.
-export const portfolioProjects: PortfolioProject[] = [
+export const portfolioProjects: PortfolioProject[]  {
+    id: "avant-cinema",
+    title: "Avant Cinema",
+    category: "Streaming & Entertainment",
+    description: "A film and TV streaming platform with a Netflix-style browsing experience, featured titles, watch pages and an AI assistant for content discovery.",
+    url: "https://www.avantcinematic.com",
+    tags: ["Streaming", "Entertainment", "Video Platform", "AI"],
+    image: portfolioAvantCinema,
+    status: "completed",
+  },
+ = [
   {
     id: "kenyaadverts-com",
     title: "Kenya Adverts Marketplace",
@@ -101,16 +111,6 @@ export const portfolioProjects: PortfolioProject[] = [
     url: "https://medlifeechos.vercel.app/",
     tags: ["Blog", "Medical", "Education", "SEO"],
     image: portfolioMedlife,
-    status: "completed",
-  },
-  {
-    id: "avant-cinema",
-    title: "Avant Cinema",
-    category: "Streaming & Entertainment",
-    description: "A film and TV streaming platform with a Netflix-style browsing experience, featured titles, watch pages and an AI assistant for content discovery.",
-    url: "https://www.avantcinematic.com",
-    tags: ["Streaming", "Entertainment", "Video Platform", "AI"],
-    image: portfolioAvantCinema,
     status: "completed",
   },
 ];

@@ -6,7 +6,7 @@ import { portfolioProjects } from "@/lib/constants";
 import { useMemo, useState } from "react";
 import Seo from "@/components/Seo";
 
-const filters = ["All", "Business", "Marketplace", "Education", "Organisation", "E-Commerce"];
+const filters = ["All", "Business", "Marketplace", "Education", "Organisation", "E-Commerce", "Entertainment"];
 const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
 
 export default function PortfolioPage() {
