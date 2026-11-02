@@ -32,7 +32,8 @@ export interface PortfolioProject {
 // Keep this list focused on real projects already represented by repository assets.
 // The order intentionally leads with commercial/client-facing work before education
 // and organisation projects so the portfolio communicates broader web-development experience.
-export const portfolioProjects: PortfolioProject[]  {
+export const portfolioProjects: PortfolioProject[] = [
+  {
     id: "avant-cinema",
     title: "Avant Cinema",
     category: "Streaming & Entertainment",
@@ -42,7 +43,6 @@ export const portfolioProjects: PortfolioProject[]  {
     image: portfolioAvantCinema,
     status: "completed",
   },
- = [
   {
     id: "kenyaadverts-com",
     title: "Kenya Adverts Marketplace",
