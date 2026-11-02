@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "essential-prep-checklist-before-your-first-marketplace-seller-joins",
+    slug: "essential-prep-checklist-before-your-first-marketplace-seller-joins",
+    title: "Essential Prep Checklist Before Your First Marketplace Seller Joins",
+    metaTitle: "What Your Marketplace Needs – KenyaAdverts Guide",
+    metaDescription: "Discover the must‑have features, processes and tools a marketplace must have before its first seller signs up. Practical steps from planning to launch.",
+    excerpt: "Before you welcome your first seller, ensure your marketplace has the right foundation, trust systems, and onboarding flow to deliver a smooth experience.",
+    category: "Marketplaces",
+    tags: ["marketplace","ecommerce","seller onboarding","trust and safety","launch checklist"],
+    readTime: "9 min",
+    publishedAt: "2026-11-02",
+    updatedAt: "2026-11-02",
+    featured: false,
+  },
+  {
     id: "progressive-web-apps-a-lighter-alternative-to-native-mobile-apps",
     slug: "progressive-web-apps-a-lighter-alternative-to-native-mobile-apps",
     title: "Progressive Web Apps: A Lighter Alternative to Native Mobile Apps",
