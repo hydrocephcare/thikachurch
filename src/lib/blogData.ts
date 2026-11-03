@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "what-works-on-donation-pages-for-churches-and-ngos",
+    slug: "what-works-on-donation-pages-for-churches-and-ngos",
+    title: "What Works on Donation Pages for Churches and NGOs",
+    metaTitle: "Effective Donation Pages for Churches & NGOs | KenyaAdverts",
+    metaDescription: "Learn proven design, content, and technical tactics that turn church and NGO donation pages into high‑conversion tools. KenyaAdverts can help you build yours.",
+    excerpt: "A practical guide that breaks down the psychology, essential elements, design tricks, and technical features that make donation pages for churches and NGOs convert better.",
+    category: "Organisation Websites",
+    tags: ["donation","church","ngo","webdesign","conversion"],
+    readTime: "9 min",
+    publishedAt: "2026-11-03",
+    updatedAt: "2026-11-03",
+    featured: false,
+  },
+  {
     id: "essential-prep-checklist-before-your-first-marketplace-seller-joins",
     slug: "essential-prep-checklist-before-your-first-marketplace-seller-joins",
     title: "Essential Prep Checklist Before Your First Marketplace Seller Joins",
