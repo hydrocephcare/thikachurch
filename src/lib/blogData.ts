@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "core-web-vitals-made-simple-boost-your-sites-speed",
+    slug: "core-web-vitals-made-simple-boost-your-sites-speed",
+    title: "Core Web Vitals Made Simple: Boost Your Site’s Speed",
+    metaTitle: "Core Web Vitals Explained – KenyaAdverts Guide",
+    metaDescription: "Learn Core Web Vitals in plain language and practical steps to improve site performance. KenyaAdverts can help you get fast, user‑friendly pages.",
+    excerpt: "Core Web Vitals are the three key metrics Google uses to gauge page speed and stability. This guide breaks them down without technical jargon.",
+    category: "Performance",
+    tags: ["core web vitals","performance","seo","website speed","user experience"],
+    readTime: "9 min",
+    publishedAt: "2026-11-05",
+    updatedAt: "2026-11-05",
+    featured: false,
+  },
+  {
     id: "what-works-on-donation-pages-for-churches-and-ngos",
     slug: "what-works-on-donation-pages-for-churches-and-ngos",
     title: "What Works on Donation Pages for Churches and NGOs",
