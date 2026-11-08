@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "why-your-website-needs-google-search-console-not-just-analytics",
+    slug: "why-your-website-needs-google-search-console-not-just-analytics",
+    title: "Why Your Website Needs Google Search Console, Not Just Analytics",
+    metaTitle: "Google Search Console vs Analytics | KenyaAdverts",
+    metaDescription: "Learn why Google Search Console is a must‑have alongside Analytics for SEO, indexing, and technical health. KenyaAdverts shows how to leverage both tools.",
+    excerpt: "Google Search Console provides visibility into how Google sees your site, from indexing to crawl errors, complementing the visitor‑centric data of Analytics. Together they give a complete picture of performance.",
+    category: "SEO",
+    tags: ["seo","google-search-console","analytics","website-management","kenyaadverts"],
+    readTime: "9 min",
+    publishedAt: "2026-11-08",
+    updatedAt: "2026-11-08",
+    featured: false,
+  },
+  {
     id: "core-web-vitals-made-simple-boost-your-sites-speed",
     slug: "core-web-vitals-made-simple-boost-your-sites-speed",
     title: "Core Web Vitals Made Simple: Boost Your Site’s Speed",
