@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "designing-a-restaurant-website-that-actually-drives-orders",
+    slug: "designing-a-restaurant-website-that-actually-drives-orders",
+    title: "Designing a Restaurant Website That Actually Drives Orders",
+    metaTitle: "Restaurant Web Design that Converts – KenyaAdverts",
+    metaDescription: "Learn practical steps to build a restaurant website that turns visitors into diners. From menu layout to mobile ordering, get actionable tips.",
+    excerpt: "A well‑crafted restaurant site does more than look good – it guides hungry visitors straight to the order button. This guide shows how to design each element for maximum conversions.",
+    category: "Web Design",
+    tags: ["restaurant","web design","online ordering","seo","mobile"],
+    readTime: "9 min",
+    publishedAt: "2026-11-09",
+    updatedAt: "2026-11-09",
+    featured: false,
+  },
+  {
     id: "why-your-website-needs-google-search-console-not-just-analytics",
     slug: "why-your-website-needs-google-search-console-not-just-analytics",
     title: "Why Your Website Needs Google Search Console, Not Just Analytics",
