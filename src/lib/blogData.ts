@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "from-instagram-sales-to-a-full-online-store-what-really-changes",
+    slug: "from-instagram-sales-to-a-full-online-store-what-really-changes",
+    title: "From Instagram Sales to a Full Online Store: What Really Changes",
+    metaTitle: "KenyaAdverts Guide: Moving from Instagram to an Online Store",
+    metaDescription: "Discover the practical shifts when you transition from Instagram-only sales to a full e‑commerce website. Learn platform, payment, branding and marketing changes.",
+    excerpt: "Moving beyond Instagram to a dedicated online store reshapes how you showcase products, process payments, and grow your brand. This guide walks you through the essential changes and how to manage them.",
+    category: "E-Commerce",
+    tags: ["ecommerce","instagram","onlinestore","digitalmarketing","kenyaadverts"],
+    readTime: "7 min",
+    publishedAt: "2026-11-10",
+    updatedAt: "2026-11-10",
+    featured: false,
+  },
+  {
     id: "designing-a-restaurant-website-that-actually-drives-orders",
     slug: "designing-a-restaurant-website-that-actually-drives-orders",
     title: "Designing a Restaurant Website That Actually Drives Orders",
