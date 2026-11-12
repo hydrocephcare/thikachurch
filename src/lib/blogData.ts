@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "real-estate-websites-features-buyers-actually-use",
+    slug: "real-estate-websites-features-buyers-actually-use",
+    title: "Real Estate Websites: Features Buyers Actually Use",
+    metaTitle: "Real Estate Site Features Buyers Use | KenyaAdverts",
+    metaDescription: "Discover the must‑have features that home‑buyers actually use on real‑estate websites, and how KenyaAdverts can help you build a site that converts.",
+    excerpt: "Home‑buyers ignore flashy extras and gravitate toward tools that make property hunting fast, clear, and trustworthy. This article breaks down the exact features they use and why they matter.",
+    category: "Web Design",
+    tags: ["real estate","web design","user experience","property search","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-11-12",
+    updatedAt: "2026-11-12",
+    featured: false,
+  },
+  {
     id: "from-instagram-sales-to-a-full-online-store-what-really-changes",
     slug: "from-instagram-sales-to-a-full-online-store-what-really-changes",
     title: "From Instagram Sales to a Full Online Store: What Really Changes",
