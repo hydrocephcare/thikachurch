@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "choosing-a-timeless-domain-name-a-practical-field-guide",
+    slug: "choosing-a-timeless-domain-name-a-practical-field-guide",
+    title: "Choosing a Timeless Domain Name: A Practical Field Guide",
+    metaTitle: "Timeless Domain Names Guide – KenyaAdverts",
+    metaDescription: "Learn how to pick a domain name that stays relevant, avoids aging pitfalls, and supports your brand’s long‑term growth. KenyaAdverts can help.",
+    excerpt: "A domain name is more than an address – it’s a long‑term brand asset. This guide walks you through the steps to choose a name that won’t feel outdated in five years or ten.",
+    category: "Planning",
+    tags: ["domain names","branding","seo","business planning","web design"],
+    readTime: "9 min",
+    publishedAt: "2026-11-13",
+    updatedAt: "2026-11-13",
+    featured: false,
+  },
+  {
     id: "real-estate-websites-features-buyers-actually-use",
     slug: "real-estate-websites-features-buyers-actually-use",
     title: "Real Estate Websites: Features Buyers Actually Use",
