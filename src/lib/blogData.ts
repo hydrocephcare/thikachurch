@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "what-a-custom-dashboard-replaces-in-a-growing-business",
+    slug: "what-a-custom-dashboard-replaces-in-a-growing-business",
+    title: "What a Custom Dashboard Replaces in a Growing Business",
+    metaTitle: "Custom Dashboard Benefits – KenyaAdverts",
+    metaDescription: "Discover how a tailored dashboard eliminates spreadsheets, email chaos and fragmented tools, giving growing Kenyan businesses real‑time insight and faster decisions.",
+    excerpt: "A custom dashboard swaps out spreadsheets, endless emails and siloed apps for a single, real‑time view that fuels smarter decisions as your business scales.",
+    category: "Web Applications",
+    tags: ["dashboard","business-intelligence","web-applications","custom-software","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-11-14",
+    updatedAt: "2026-11-14",
+    featured: false,
+  },
+  {
     id: "choosing-a-timeless-domain-name-a-practical-field-guide",
     slug: "choosing-a-timeless-domain-name-a-practical-field-guide",
     title: "Choosing a Timeless Domain Name: A Practical Field Guide",
