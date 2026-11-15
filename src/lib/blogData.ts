@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "website-security-basics-every-small-business-owner-should-know",
+    slug: "website-security-basics-every-small-business-owner-should-know",
+    title: "Website Security Basics Every Small Business Owner Should Know",
+    metaTitle: "Website Security Basics for Small Business | KenyaAdverts",
+    metaDescription: "Learn practical, non‑technical steps to protect your small business website. From passwords to backups, get actionable advice you can implement today.",
+    excerpt: "A clear guide for non‑developers on protecting a small business website, covering passwords, updates, SSL, backups and when to seek professional help.",
+    category: "Security & Compliance",
+    tags: ["security","small business","website","cybersecurity","maintenance"],
+    readTime: "9 min",
+    publishedAt: "2026-11-15",
+    updatedAt: "2026-11-15",
+    featured: false,
+  },
+  {
     id: "what-a-custom-dashboard-replaces-in-a-growing-business",
     slug: "what-a-custom-dashboard-replaces-in-a-growing-business",
     title: "What a Custom Dashboard Replaces in a Growing Business",
