@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "internal-linking-the-free-seo-upgrade-small-sites-often-miss",
+    slug: "internal-linking-the-free-seo-upgrade-small-sites-often-miss",
+    title: "Internal Linking: The Free SEO Upgrade Small Sites Often Miss",
+    metaTitle: "Internal Linking Tips for Small Sites | KenyaAdverts",
+    metaDescription: "Discover how strategic internal linking can boost your site's SEO without extra cost. Simple steps, tools, and best practices for Kenyan small businesses.",
+    excerpt: "Internal linking is a cost‑free way to strengthen site authority and guide users, yet many small websites overlook it. This guide shows why it matters and how to implement it effectively.",
+    category: "SEO",
+    tags: ["seo","internal-linking","website-structure","small-business","kenya"],
+    readTime: "9 min",
+    publishedAt: "2026-11-16",
+    updatedAt: "2026-11-16",
+    featured: false,
+  },
+  {
     id: "website-security-basics-every-small-business-owner-should-know",
     slug: "website-security-basics-every-small-business-owner-should-know",
     title: "Website Security Basics Every Small Business Owner Should Know",
