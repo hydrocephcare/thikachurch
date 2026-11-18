@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "logistics-websites-tracking-quotes-trust",
+    slug: "logistics-websites-tracking-quotes-trust",
+    title: "Logistics Websites: Tracking, Quotes & Trust",
+    metaTitle: "Logistics Website Design Tips – KenyaAdverts",
+    metaDescription: "Learn how logistics and delivery sites can boost confidence with real‑time tracking, instant quotes, and trust‑building design. Practical tips for Kenyan businesses.",
+    excerpt: "A logistics website that offers live shipment tracking, on‑the‑spot price quotes, and clear trust signals turns browsers into loyal customers. This guide walks you through each element.",
+    category: "Web Design",
+    tags: ["logistics","webdesign","tracking","quotes","trust"],
+    readTime: "9 min",
+    publishedAt: "2026-11-18",
+    updatedAt: "2026-11-18",
+    featured: false,
+  },
+  {
     id: "internal-linking-the-free-seo-upgrade-small-sites-often-miss",
     slug: "internal-linking-the-free-seo-upgrade-small-sites-often-miss",
     title: "Internal Linking: The Free SEO Upgrade Small Sites Often Miss",
