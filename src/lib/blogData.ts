@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "when-a-landing-page-beats-a-full-site-for-a-new-product-launch",
+    slug: "when-a-landing-page-beats-a-full-site-for-a-new-product-launch",
+    title: "When a Landing Page Beats a Full Site for a New Product Launch",
+    metaTitle: "When a Landing Page Beats a Full Site – KenyaAdverts",
+    metaDescription: "Discover why a focused landing page can outshine a full website during a product launch, from speed and cost to data‑driven optimisation. Practical tips for marketers in Kenya.",
+    excerpt: "A single‑purpose landing page can convert faster, cost less, and give you clearer data than a full website when launching a new product. Learn when and how to choose the lean approach.",
+    category: "Marketing",
+    tags: ["landing-page","product-launch","marketing","conversion","web-design"],
+    readTime: "9 min",
+    publishedAt: "2026-11-19",
+    updatedAt: "2026-11-19",
+    featured: false,
+  },
+  {
     id: "logistics-websites-tracking-quotes-trust",
     slug: "logistics-websites-tracking-quotes-trust",
     title: "Logistics Websites: Tracking, Quotes & Trust",
