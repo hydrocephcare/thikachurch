@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "add-video-streaming-to-your-site-without-building-a-netflix",
+    slug: "add-video-streaming-to-your-site-without-building-a-netflix",
+    title: "Add Video & Streaming to Your Site Without Building a Netflix",
+    metaTitle: "Video Streaming Made Easy – KenyaAdverts Guide",
+    metaDescription: "Learn practical ways to embed video and stream content on your website using ready‑made platforms, players and SEO tips – without building your own Netflix.",
+    excerpt: "You don’t need a massive infrastructure to host video. This guide walks you through affordable platforms, integration techniques and performance tricks to stream like a pro.",
+    category: "Web Applications",
+    tags: ["video","streaming","web development","seo","cdn"],
+    readTime: "9 min",
+    publishedAt: "2026-11-20",
+    updatedAt: "2026-11-20",
+    featured: false,
+  },
+  {
     id: "when-a-landing-page-beats-a-full-site-for-a-new-product-launch",
     slug: "when-a-landing-page-beats-a-full-site-for-a-new-product-launch",
     title: "When a Landing Page Beats a Full Site for a New Product Launch",
