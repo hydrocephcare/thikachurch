@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "how-a-killer-portfolio-site-turns-freelancers-into-hired-talent",
+    slug: "how-a-killer-portfolio-site-turns-freelancers-into-hired-talent",
+    title: "How a Killer Portfolio Site Turns Freelancers Into Hired Talent",
+    metaTitle: "Portfolio Secrets for Freelancers – KenyaAdverts Guide",
+    metaDescription: "Discover the exact elements a portfolio website needs to convince clients to hire you, with practical tips and real‑world examples.",
+    excerpt: "A strong portfolio does more than list work; it tells a story, builds trust, and guides prospects toward hiring you. Learn the concrete steps that turn browsers into clients.",
+    category: "Portfolio Websites",
+    tags: ["portfolio","freelance","web design","client acquisition","kenyaadverts"],
+    readTime: "8 min",
+    publishedAt: "2026-11-21",
+    updatedAt: "2026-11-21",
+    featured: false,
+  },
+  {
     id: "add-video-streaming-to-your-site-without-building-a-netflix",
     slug: "add-video-streaming-to-your-site-without-building-a-netflix",
     title: "Add Video & Streaming to Your Site Without Building a Netflix",
