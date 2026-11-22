@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "multivendor-marketplace-moderation-trust-hard-parts",
+    slug: "multivendor-marketplace-moderation-trust-hard-parts",
+    title: "Multi‑Vendor Marketplace: Moderation, Trust & Hard Parts",
+    metaTitle: "Multi‑Vendor Marketplace Guide – KenyaAdverts",
+    metaDescription: "Learn how to moderate content, build buyer‑seller trust, and tackle the toughest challenges of running a multi‑vendor marketplace. Practical tips from KenyaAdverts.",
+    excerpt: "Running a multi‑vendor marketplace demands careful moderation, clear trust signals, and robust dispute handling. This article breaks down the hard parts and offers actionable guidance.",
+    category: "Marketplaces",
+    tags: ["marketplace","moderation","trust","ecommerce","multi‑vendor"],
+    readTime: "9 min",
+    publishedAt: "2026-11-22",
+    updatedAt: "2026-11-22",
+    featured: false,
+  },
+  {
     id: "how-a-killer-portfolio-site-turns-freelancers-into-hired-talent",
     slug: "how-a-killer-portfolio-site-turns-freelancers-into-hired-talent",
     title: "How a Killer Portfolio Site Turns Freelancers Into Hired Talent",
