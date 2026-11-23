@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "a-realistic-look-at-ai-chatbots-on-small-business-websites",
+    slug: "a-realistic-look-at-ai-chatbots-on-small-business-websites",
+    title: "A realistic look at AI chatbots on small business websites",
+    metaTitle: "AI Chatbots for Small Business Websites – KenyaAdverts",
+    metaDescription: "Explore the real benefits, pitfalls, and cost‑effective ways to add an AI chatbot to a Kenyan small business website. Practical advice from KenyaAdverts.",
+    excerpt: "AI chatbots can boost availability and lead capture for small businesses, but they must be scoped realistically and maintained carefully to deliver value.",
+    category: "Web Development",
+    tags: ["ai","chatbot","web development","small business","kenya"],
+    readTime: "8 min",
+    publishedAt: "2026-11-23",
+    updatedAt: "2026-11-23",
+    featured: false,
+  },
+  {
     id: "multivendor-marketplace-moderation-trust-hard-parts",
     slug: "multivendor-marketplace-moderation-trust-hard-parts",
     title: "Multi‑Vendor Marketplace: Moderation, Trust & Hard Parts",
