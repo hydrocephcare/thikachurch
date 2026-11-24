@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "why-redesigns-fail-and-the-audit-that-saves-them",
+    slug: "why-redesigns-fail-and-the-audit-that-saves-them",
+    title: "Why Redesigns Fail and the Audit That Saves Them",
+    metaTitle: "Why Redesigns Fail – KenyaAdverts Audit Guide",
+    metaDescription: "Discover common redesign pitfalls and how a thorough pre‑redesign audit can keep your website on track. Practical tips from KenyaAdverts.",
+    excerpt: "A website redesign can boost performance, but many projects stumble. Learn the key reasons redesigns go wrong and the audit steps that prevent costly mistakes.",
+    category: "Web Design",
+    tags: ["web design","redesign","audit","user experience","seo"],
+    readTime: "9 min",
+    publishedAt: "2026-11-24",
+    updatedAt: "2026-11-24",
+    featured: false,
+  },
+  {
     id: "a-realistic-look-at-ai-chatbots-on-small-business-websites",
     slug: "a-realistic-look-at-ai-chatbots-on-small-business-websites",
     title: "A realistic look at AI chatbots on small business websites",
