@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "choosing-hosting-for-a-kenyan-business-what-really-matters",
+    slug: "choosing-hosting-for-a-kenyan-business-what-really-matters",
+    title: "Choosing Hosting for a Kenyan Business: What Really Matters",
+    metaTitle: "Choosing Hosting for Kenyan Business – KenyaAdverts Guide",
+    metaDescription: "Discover the key factors Kenyan businesses should consider when picking web hosting, from speed and security to local support and cost.",
+    excerpt: "A practical guide that breaks down the essential criteria for selecting a web host that fits the unique needs of Kenyan businesses.",
+    category: "Infrastructure",
+    tags: ["hosting","kenya","business","infrastructure","web performance","security"],
+    readTime: "9 min",
+    publishedAt: "2026-11-25",
+    updatedAt: "2026-11-25",
+    featured: false,
+  },
+  {
     id: "why-redesigns-fail-and-the-audit-that-saves-them",
     slug: "why-redesigns-fail-and-the-audit-that-saves-them",
     title: "Why Redesigns Fail and the Audit That Saves Them",
