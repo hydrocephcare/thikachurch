@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "how-to-write-faq-content-that-cuts-support-queries",
+    slug: "how-to-write-faq-content-that-cuts-support-queries",
+    title: "How to Write FAQ Content That Cuts Support Queries",
+    metaTitle: "FAQ Writing Tips to Reduce Support – KenyaAdverts",
+    metaDescription: "Learn practical steps to craft FAQ pages that actually answer customer questions, lower support tickets, and improve user experience.",
+    excerpt: "A well‑crafted FAQ does more than fill space – it anticipates real problems and gives users the answers they need before they reach out for help.",
+    category: "Content Strategy",
+    tags: ["faq","content strategy","customer support","web design","seo"],
+    readTime: "9 min",
+    publishedAt: "2026-11-26",
+    updatedAt: "2026-11-26",
+    featured: false,
+  },
+  {
     id: "choosing-hosting-for-a-kenyan-business-what-really-matters",
     slug: "choosing-hosting-for-a-kenyan-business-what-really-matters",
     title: "Choosing Hosting for a Kenyan Business: What Really Matters",
